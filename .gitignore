@@ -3,3 +3,4 @@ replays
 target
 *.lock
 *.dem
+.vscode/

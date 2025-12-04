@@ -65,7 +65,7 @@ impl<'a> Parser<'a> {
             skip_deltas: false,
 
             context: Context::new(replay_info.clone()),
-            
+
             replay_info,
             last_tick,
         })
@@ -129,19 +129,27 @@ impl<'a> Parser<'a> {
     ) -> Result<(), ParserError> {
         match msg_type {
             EDemoCommands::DemSendTables => {
+                println!("DemSendTables");
                 self.dem_send_tables(CDemoSendTables::decode(msg)?)?;
             }
             EDemoCommands::DemClassInfo => {
+                println!("DemClassInfo");
                 self.dem_class_info(CDemoClassInfo::decode(msg)?)?;
             }
             EDemoCommands::DemPacket | EDemoCommands::DemSignonPacket => {
+                println!("DemPacket");
                 self.dem_packet(CDemoPacket::decode(msg)?)?;
             }
-            EDemoCommands::DemFullPacket => self.dem_full_packet(CDemoFullPacket::decode(msg)?)?,
+            EDemoCommands::DemFullPacket => {
+                println!("DemFullPacket");
+                self.dem_full_packet(CDemoFullPacket::decode(msg)?)?
+            }
             EDemoCommands::DemStringTables => {
+                println!("DemStringTables");
                 self.dem_string_tables(CDemoStringTables::decode(msg)?)?
             }
             EDemoCommands::DemStop => {
+                println!("DemStop");
                 self.dem_stop()?;
             }
             _ => {}

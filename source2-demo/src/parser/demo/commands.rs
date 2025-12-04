@@ -5,6 +5,7 @@ use crate::parser::demo::DemoMessages;
 use crate::proto::*;
 use crate::reader::*;
 use crate::HashMap;
+use crate::PacketStats;
 use crate::{Parser, StringTableRow};
 use std::rc::Rc;
 
@@ -142,6 +143,8 @@ impl DemoCommands for Parser<'_> {
 
     fn dem_packet(&mut self, packet: CDemoPacket) -> Result<(), ParserError> {
         let mut packet_reader = Reader::new(packet.data());
+        self.context.packet_stats = PacketStats::default();
+        self.context.packet_stats.add_packet();
         while packet_reader.bytes_remaining() != 0 {
             let msg_type = packet_reader.read_ubit_var() as i32;
             let size = packet_reader.read_var_u32();
@@ -152,6 +155,8 @@ impl DemoCommands for Parser<'_> {
                 self.on_dota_user_message(msg, &msg_buf)?;
                 continue;
             }
+
+            self.context.packet_stats.add_message(msg_type as u32);
 
             #[cfg(feature = "deadlock")]
             if let Ok(msg) = CitadelUserMessageIds::try_from(msg_type) {
@@ -172,7 +177,7 @@ impl DemoCommands for Parser<'_> {
                 self.on_net_message(msg, &msg_buf)?;
             }
         }
-
+        print!("\n\n{}", &self.context.packet_stats);
         Ok(())
     }
 

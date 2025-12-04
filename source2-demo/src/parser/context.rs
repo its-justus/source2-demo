@@ -4,6 +4,7 @@ use crate::event::*;
 use crate::string_table::*;
 use crate::HashMap;
 use source2_demo_protobufs::CDemoFileInfo;
+use std::fmt::Display;
 use std::rc::Rc;
 
 /// Current replay state.
@@ -23,6 +24,7 @@ pub struct Context {
     pub(crate) baselines: BaselineContainer,
     pub(crate) serializers: HashMap<Box<str>, Rc<Serializer>>,
     pub(crate) last_full_packet_tick: u32,
+    pub(crate) packet_stats: PacketStats,
 }
 
 impl Default for Context {
@@ -40,6 +42,7 @@ impl Default for Context {
             baselines: BaselineContainer::default(),
             serializers: HashMap::default(),
             last_full_packet_tick: u32::MAX,
+            packet_stats: PacketStats::default(),
         }
     }
 }
@@ -84,5 +87,62 @@ impl Context {
 
     pub fn replay_info(&self) -> &CDemoFileInfo {
         &self.replay_info
+    }
+
+    pub fn packet_stats(&self) -> &PacketStats {
+        &self.packet_stats
+    }
+}
+
+pub struct PacketStats {
+    packet_count: u32,
+    message_count: u32,
+    message_type_counts: HashMap<u32, u32>,
+}
+
+impl PacketStats {
+    pub fn packets(&self) -> u32 {
+        self.packet_count
+    }
+
+    pub fn add_packet(&mut self) {
+        self.packet_count += 1;
+    }
+
+    pub fn messages(&self) -> u32 {
+        self.message_count
+    }
+
+    pub fn add_message(&mut self, m_type: u32) {
+        self.message_count += 1;
+        self.message_type_counts
+            .entry(m_type)
+            .and_modify(|e| *e += 1)
+            .or_insert(1);
+    }
+}
+
+impl Default for PacketStats {
+    fn default() -> Self {
+        Self {
+            packet_count: 0,
+            message_count: 0,
+            message_type_counts: Default::default(),
+        }
+    }
+}
+
+impl Display for PacketStats {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let m_types: String = self
+            .message_type_counts
+            .iter()
+            .map(|e| format!("\n{}: {}", e.0, e.1))
+            .collect();
+        write!(
+            f,
+            "packets: {}, messages: {}{}",
+            self.packet_count, self.message_count, m_types
+        )
     }
 }
