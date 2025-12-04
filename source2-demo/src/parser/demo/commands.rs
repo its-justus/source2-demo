@@ -157,6 +157,15 @@ impl DemoCommands for Parser<'_> {
             }
 
             self.context.packet_stats.add_message(msg_type as u32);
+            let m_type = MessageType::from(msg_type);
+
+            match m_type {
+                MessageType::Net(net_messages) => match net_messages {
+                    NetMessages::NetTick => dump_tick_message(&msg_buf),
+                    _ => (),
+                },
+                MessageType::Unknown => (),
+            }
 
             #[cfg(feature = "deadlock")]
             if let Ok(msg) = CitadelUserMessageIds::try_from(msg_type) {
@@ -221,4 +230,22 @@ impl DemoCommands for Parser<'_> {
         self.on_stop()?;
         Ok(())
     }
+}
+
+enum MessageType {
+    Net(NetMessages),
+    Unknown,
+}
+
+impl From<i32> for MessageType {
+    fn from(value: i32) -> Self {
+        match value {
+            4 => MessageType::Net(NetMessages::NetTick),
+            _ => MessageType::Unknown,
+        }
+    }
+}
+
+fn dump_tick_message(msg: &Vec<u8>) {
+    println!("yay, we got a tick!");
 }
