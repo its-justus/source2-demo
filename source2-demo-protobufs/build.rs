@@ -3,52 +3,41 @@ use std::collections::HashMap;
 use std::fs;
 
 fn main() -> std::io::Result<()> {
-    let update = std::env::var_os("UPDATE_PROTOBUFS").map(|v| v == "1").unwrap_or(false);
-    if update {
-        let mut config = prost_build::Config::new();
-        config.out_dir(".");
-        config.type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]");
+    let mut config = prost_build::Config::new();
+    config.out_dir(".");
+    config.type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]");
 
-        config.default_package_filename("common");
-        config.compile_protos(
-            &[
-                "./protos/common/demo.proto",
-                "./protos/common/gameevents.proto",
-                "./protos/common/netmessages.proto",
-                "./protos/common/network_connection.proto",
-                "./protos/common/networkbasetypes.proto",
-                "./protos/common/usermessages.proto",
-                "./protos/common/usercmd.proto",
-            ],
-            &["./protos/common"],
-        )?;
+    config.default_package_filename("common");
+    config.compile_protos(
+        &[
+            "./protos/common/demo.proto",
+            "./protos/common/gameevents.proto",
+            "./protos/common/netmessages.proto",
+            "./protos/common/network_connection.proto",
+            "./protos/common/networkbasetypes.proto",
+            "./protos/common/usermessages.proto",
+            "./protos/common/usercmd.proto",
+        ],
+        &["./protos/common"],
+    )?;
 
-        config.default_package_filename("dota");
-        config.compile_protos(
-            &["./protos/dota/dota_commonmessages.proto", "./protos/dota/dota_modifiers.proto", "./protos/dota/dota_shared_enums.proto", "./protos/dota/dota_usermessages.proto"],
-            &["./protos/dota", "./protos/common"],
-        )?;
+    config.default_package_filename("citadel");
+    config.compile_protos(
+        &[
+            "./protos/citadel/citadel_gameevents.proto",
+            "./protos/citadel/citadel_gcmessages_common.proto",
+            "./protos/citadel/citadel_usermessages.proto",
+            "./protos/citadel/base_modifier.proto",
+            "./protos/citadel/valveextensions.proto",
+            "./protos/citadel/citadel_usercmd.proto",
+        ],
+        &["./protos/common", "./protos/citadel"],
+    )?;
 
-        config.default_package_filename("citadel");
-        config.compile_protos(
-            &[
-                "./protos/citadel/citadel_gameevents.proto",
-                "./protos/citadel/citadel_gcmessages_common.proto",
-                "./protos/citadel/citadel_usermessages.proto",
-                "./protos/citadel/base_modifier.proto",
-                "./protos/citadel/valveextensions.proto",
-                "./protos/citadel/citadel_usercmd.proto",
-            ],
-            &["./protos/common", "./protos/citadel"],
-        )?;
+    clean_rust_file("common.rs")?;
+    clean_rust_file("citadel.rs")?;
 
-        clean_rust_file("dota.rs")?;
-        clean_rust_file("common.rs")?;
-        clean_rust_file("citadel.rs")?;
-
-        clean_blocks("dota.rs", "common.rs")?;
-        clean_blocks("citadel.rs", "common.rs")?;
-    }
+    clean_blocks("citadel.rs", "common.rs")?;
     Ok(())
 }
 

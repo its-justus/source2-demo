@@ -1,6 +1,7 @@
 pub use crate::common::*;
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CBroadcastPostGameDataFrameRequest {
     #[prost(uint32, optional, tag = "1")]
     pub appid: ::core::option::Option<u32>,
@@ -12,7 +13,8 @@ pub struct CBroadcastPostGameDataFrameRequest {
     pub frame_data: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelEntityMsgBreakablePropSpawnDebris {
     #[prost(message, optional, tag = "1")]
     pub entity_msg: ::core::option::Option<CEntityMsg>,
@@ -22,7 +24,35 @@ pub struct CCitadelEntityMsgBreakablePropSpawnDebris {
     pub damage: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CCitadelUserCmdPb {
+    #[prost(message, optional, tag = "1")]
+    pub base: ::core::option::Option<CBaseUserCmdPb>,
+    #[prost(message, optional, tag = "2")]
+    pub vec_camera_position: ::core::option::Option<CMsgVector>,
+    #[prost(message, optional, tag = "3")]
+    pub ang_camera_angles: ::core::option::Option<CMsgQAngle>,
+    #[prost(int32, optional, tag = "4")]
+    pub execute_ability_indices: ::core::option::Option<i32>,
+    #[prost(bool, optional, tag = "5")]
+    pub in_shop: ::core::option::Option<bool>,
+    #[prost(float, optional, tag = "6")]
+    pub camera_roaming_speed: ::core::option::Option<f32>,
+    #[prost(bool, optional, tag = "8")]
+    pub using_free_cursor: ::core::option::Option<bool>,
+    #[prost(int32, optional, tag = "10", default = "-1")]
+    pub enemy_hero_aimed_at: ::core::option::Option<i32>,
+    #[prost(int32, repeated, packed = "false", tag = "11")]
+    pub view_delta_x: ::prost::alloc::vec::Vec<i32>,
+    #[prost(int32, repeated, packed = "false", tag = "12")]
+    pub view_delta_y: ::prost::alloc::vec::Vec<i32>,
+    #[prost(bool, optional, tag = "13")]
+    pub is_in_third_person_view: ::core::option::Option<bool>,
+}
+
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMessageAbilityNotify {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_victim: ::core::option::Option<i32>,
@@ -34,7 +64,8 @@ pub struct CCitadelUserMessageAbilityNotify {
     pub modifier_state: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMessageAuraModifierApplied {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_caster: ::core::option::Option<i32>,
@@ -50,7 +81,8 @@ pub struct CCitadelUserMessageAuraModifierApplied {
     pub aura_end_time: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMessageBulletHit {
     #[prost(int32, optional, tag = "1")]
     pub shotid: ::core::option::Option<i32>,
@@ -64,7 +96,8 @@ pub struct CCitadelUserMessageBulletHit {
     pub is_predicted: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMessageCurrencyChanged {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub userid: ::core::option::Option<i32>,
@@ -88,7 +121,8 @@ pub struct CCitadelUserMessageCurrencyChanged {
     pub new_value: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMessageDamage {
     #[prost(int32, optional, tag = "1")]
     pub damage: ::core::option::Option<i32>,
@@ -150,7 +184,8 @@ pub struct CCitadelUserMessageDamage {
     pub server_tick: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMessageGameOver {
     #[prost(int32, optional, tag = "1")]
     pub winning_team: ::core::option::Option<i32>,
@@ -158,7 +193,8 @@ pub struct CCitadelUserMessageGameOver {
     pub just_a_test: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMessageItemPurchaseNotification {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub userid: ::core::option::Option<i32>,
@@ -170,7 +206,8 @@ pub struct CCitadelUserMessageItemPurchaseNotification {
     pub quickbuy: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMessageMeleeHit {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub hit_entindex: ::core::option::Option<i32>,
@@ -178,7 +215,8 @@ pub struct CCitadelUserMessageMeleeHit {
     pub heavy: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMessageModifierApplied {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_caster: ::core::option::Option<i32>,
@@ -188,7 +226,8 @@ pub struct CCitadelUserMessageModifierApplied {
     pub serial_number: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMessageObjectiveMask {
     #[prost(uint64, optional, tag = "2")]
     pub objective_mask_team0: ::core::option::Option<u64>,
@@ -196,17 +235,24 @@ pub struct CCitadelUserMessageObjectiveMask {
     pub objective_mask_team1: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgAbilitiesChanged {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub purchaser_player_slot: ::core::option::Option<i32>,
     #[prost(uint32, optional, tag = "2")]
     pub ability_id: ::core::option::Option<u32>,
-    #[prost(enumeration = "c_citadel_user_msg_abilities_changed::Change", optional, tag = "3", default = "EInvalid")]
+    #[prost(
+        enumeration = "c_citadel_user_msg_abilities_changed::Change",
+        optional,
+        tag = "3",
+        default = "EInvalid"
+    )]
     pub change: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgAbilityInterrupted {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_victim: ::core::option::Option<i32>,
@@ -220,7 +266,8 @@ pub struct CCitadelUserMsgAbilityInterrupted {
     pub hero_id_interrupter: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgAbilityLateFailure {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_caster: ::core::option::Option<i32>,
@@ -230,7 +277,8 @@ pub struct CCitadelUserMsgAbilityLateFailure {
     pub failure_type: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgAbilityPing {
     #[prost(message, optional, tag = "1")]
     pub ping_data: ::core::option::Option<PingCommonData>,
@@ -238,11 +286,17 @@ pub struct CCitadelUserMsgAbilityPing {
     pub ability_id: ::core::option::Option<u32>,
     #[prost(float, optional, tag = "3")]
     pub ability_cooldown: ::core::option::Option<f32>,
-    #[prost(enumeration = "ChatMsgPingMarkerInfo", optional, tag = "4", default = "KEPingMarkerInfoShowMarkerAndSound")]
+    #[prost(
+        enumeration = "ChatMsgPingMarkerInfo",
+        optional,
+        tag = "4",
+        default = "KEPingMarkerInfoShowMarkerAndSound"
+    )]
     pub ping_marker_and_sound_info: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgAg2ParamTrigger {
     #[prost(string, optional, tag = "1")]
     pub param_id: ::core::option::Option<::prost::alloc::string::String>,
@@ -250,7 +304,8 @@ pub struct CCitadelUserMsgAg2ParamTrigger {
     pub param_value: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgBossDamaged {
     #[prost(int32, required, tag = "1")]
     pub objective_team: i32,
@@ -260,7 +315,8 @@ pub struct CCitadelUserMsgBossDamaged {
     pub entity_damaged: u32,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgBossKilled {
     #[prost(int32, optional, tag = "1")]
     pub objective_team: ::core::option::Option<i32>,
@@ -280,21 +336,43 @@ pub struct CCitadelUserMsgBossKilled {
     pub entity_position: ::core::option::Option<CMsgVector>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgCallCheaterVote {
     #[prost(int32, required, tag = "1", default = "-1")]
     pub player_slot: i32,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgCameraController {
-    #[prost(enumeration = "CameraAction", required, tag = "1", default = "KEActionAddOp")]
+    #[prost(
+        enumeration = "CameraAction",
+        required,
+        tag = "1",
+        default = "KEActionAddOp"
+    )]
     pub action: i32,
-    #[prost(enumeration = "CameraOperation", optional, tag = "2", default = "KECameraOpMaintain")]
+    #[prost(
+        enumeration = "CameraOperation",
+        optional,
+        tag = "2",
+        default = "KECameraOpMaintain"
+    )]
     pub operation: ::core::option::Option<i32>,
-    #[prost(enumeration = "CameraParam", optional, tag = "3", default = "KEParamClearAllOps")]
+    #[prost(
+        enumeration = "CameraParam",
+        optional,
+        tag = "3",
+        default = "KEParamClearAllOps"
+    )]
     pub param: ::core::option::Option<i32>,
-    #[prost(enumeration = "CameraParamMode", optional, tag = "12", default = "KEParamModeAllowInOneContext")]
+    #[prost(
+        enumeration = "CameraParamMode",
+        optional,
+        tag = "12",
+        default = "KEParamModeAllowInOneContext"
+    )]
     pub param_mode: ::core::option::Option<i32>,
     #[prost(float, optional, tag = "4")]
     pub delay: ::core::option::Option<f32>,
@@ -316,9 +394,15 @@ pub struct CCitadelUserMsgCameraController {
     pub lag: ::core::option::Option<c_citadel_user_msg_camera_controller::Lag>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgChatEvent {
-    #[prost(enumeration = "ECitadelChatMessage", optional, tag = "1", default = "CitadelChatMessageUnpauseCountdown")]
+    #[prost(
+        enumeration = "ECitadelChatMessage",
+        optional,
+        tag = "1",
+        default = "CitadelChatMessageUnpauseCountdown"
+    )]
     pub r#type: ::core::option::Option<i32>,
     #[prost(uint32, repeated, packed = "false", tag = "2")]
     pub values: ::prost::alloc::vec::Vec<u32>,
@@ -326,7 +410,8 @@ pub struct CCitadelUserMsgChatEvent {
     pub player_slots: ::prost::alloc::vec::Vec<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgChatMsg {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub player_slot: ::core::option::Option<i32>,
@@ -334,11 +419,17 @@ pub struct CCitadelUserMsgChatMsg {
     pub text: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(bool, optional, tag = "3")]
     pub all_chat: ::core::option::Option<bool>,
-    #[prost(enumeration = "CMsgLaneColor", optional, tag = "4", default = "KELaneColorInvalid")]
+    #[prost(
+        enumeration = "CMsgLaneColor",
+        optional,
+        tag = "4",
+        default = "KELaneColorInvalid"
+    )]
     pub lane_color: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgChatWheel {
     #[prost(uint32, optional, tag = "1")]
     pub chat_message_id: ::core::option::Option<u32>,
@@ -352,11 +443,17 @@ pub struct CCitadelUserMsgChatWheel {
     pub hero_id: ::core::option::Option<u32>,
     #[prost(string, optional, tag = "6")]
     pub param_1: ::core::option::Option<::prost::alloc::string::String>,
-    #[prost(enumeration = "CMsgLaneColor", optional, tag = "7", default = "KELaneColorInvalid")]
+    #[prost(
+        enumeration = "CMsgLaneColor",
+        optional,
+        tag = "7",
+        default = "KELaneColorInvalid"
+    )]
     pub lane_color: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgDeathReplayData {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub killer_scorer: ::core::option::Option<i32>,
@@ -366,7 +463,8 @@ pub struct CCitadelUserMsgDeathReplayData {
     pub damage_summary: ::core::option::Option<CCitadelUserMsgRecentDamageSummary>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgEntityPortalled {
     #[prost(uint32, optional, tag = "1", default = "16777215")]
     pub entity_portalled: ::core::option::Option<u32>,
@@ -374,7 +472,8 @@ pub struct CCitadelUserMsgEntityPortalled {
     pub portal_transform: ::core::option::Option<CMsgTransform>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgFlexSlotUnlocked {
     #[prost(int32, optional, tag = "1")]
     pub team_number: ::core::option::Option<i32>,
@@ -382,30 +481,40 @@ pub struct CCitadelUserMsgFlexSlotUnlocked {
     pub flexslot_unlocked: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgForceShopClosed {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgGetDamageStatsResponse {
     #[prost(uint32, optional, tag = "1")]
     pub player_slot: ::core::option::Option<u32>,
     #[prost(string, optional, tag = "2")]
     pub ability_name: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(message, optional, tag = "3")]
-    pub damage: ::core::option::Option<c_citadel_user_msg_get_damage_stats_response::StatType>,
+    pub damage: ::core::option::Option<
+        c_citadel_user_msg_get_damage_stats_response::StatType,
+    >,
     #[prost(message, optional, tag = "4")]
-    pub healing: ::core::option::Option<c_citadel_user_msg_get_damage_stats_response::StatType>,
+    pub healing: ::core::option::Option<
+        c_citadel_user_msg_get_damage_stats_response::StatType,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgGoldHistory {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_player: ::core::option::Option<i32>,
     #[prost(message, repeated, tag = "2")]
-    pub minute_records: ::prost::alloc::vec::Vec<c_citadel_user_msg_gold_history::MinuteRecord>,
+    pub minute_records: ::prost::alloc::vec::Vec<
+        c_citadel_user_msg_gold_history::MinuteRecord,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgHeroKilled {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_victim: ::core::option::Option<i32>,
@@ -423,7 +532,8 @@ pub struct CCitadelUserMsgHeroKilled {
     pub victim_team_number: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgKillStreak {
     #[prost(uint32, required, tag = "1", default = "16777215")]
     pub player_pawn: u32,
@@ -433,7 +543,8 @@ pub struct CCitadelUserMsgKillStreak {
     pub is_first_blood: bool,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgMapLine {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub sender_player_slot: ::core::option::Option<i32>,
@@ -441,13 +552,19 @@ pub struct CCitadelUserMsgMapLine {
     pub mapline: ::core::option::Option<CMsgMapLine>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgMapPing {
     #[prost(message, required, tag = "1")]
     pub ping_data: PingCommonData,
     #[prost(uint32, optional, tag = "2")]
     pub event_type: ::core::option::Option<u32>,
-    #[prost(enumeration = "ChatMsgPingMarkerInfo", optional, tag = "3", default = "KEPingMarkerInfoShowMarkerAndSound")]
+    #[prost(
+        enumeration = "ChatMsgPingMarkerInfo",
+        optional,
+        tag = "3",
+        default = "KEPingMarkerInfoShowMarkerAndSound"
+    )]
     pub ping_marker_and_sound_info: ::core::option::Option<i32>,
     #[prost(bool, optional, tag = "4")]
     pub pinged_enemy_entity: ::core::option::Option<bool>,
@@ -461,10 +578,12 @@ pub struct CCitadelUserMsgMapPing {
     pub is_blind_ping: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgMidBossSpawned {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgMusicQueue {
     #[prost(int32, required, tag = "1")]
     pub music_state: i32,
@@ -472,10 +591,12 @@ pub struct CCitadelUserMsgMusicQueue {
     pub r#override: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgObstructedShotFired {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgParticipantSetLibraryStackFields {
     #[prost(message, required, tag = "1")]
     pub event: CMsgSosSetLibraryStackFields,
@@ -483,7 +604,8 @@ pub struct CCitadelUserMsgParticipantSetLibraryStackFields {
     pub player_slots: ::prost::alloc::vec::Vec<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgParticipantSetSoundEventParams {
     #[prost(message, required, tag = "1")]
     pub event: CMsgSosSetSoundEventParams,
@@ -491,7 +613,8 @@ pub struct CCitadelUserMsgParticipantSetSoundEventParams {
     pub player_slots: ::prost::alloc::vec::Vec<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgParticipantStartSoundEvent {
     #[prost(message, required, tag = "1")]
     pub event: CMsgSosStartSoundEvent,
@@ -499,7 +622,8 @@ pub struct CCitadelUserMsgParticipantStartSoundEvent {
     pub player_slots: ::prost::alloc::vec::Vec<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgParticipantStopSoundEvent {
     #[prost(message, required, tag = "1")]
     pub event: CMsgSosStopSoundEvent,
@@ -507,7 +631,8 @@ pub struct CCitadelUserMsgParticipantStopSoundEvent {
     pub player_slots: ::prost::alloc::vec::Vec<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgParticipantStopSoundEventHash {
     #[prost(message, required, tag = "1")]
     pub event: CMsgSosStopSoundEventHash,
@@ -515,7 +640,8 @@ pub struct CCitadelUserMsgParticipantStopSoundEventHash {
     pub player_slots: ::prost::alloc::vec::Vec<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgPingWheel {
     #[prost(message, required, tag = "1")]
     pub ping_data: PingCommonData,
@@ -523,10 +649,13 @@ pub struct CCitadelUserMsgPingWheel {
     pub ping_wheel_option_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgPlayerLifetimeStatInfo {
     #[prost(message, repeated, tag = "1")]
-    pub stats: ::prost::alloc::vec::Vec<c_citadel_user_msg_player_lifetime_stat_info::Stat>,
+    pub stats: ::prost::alloc::vec::Vec<
+        c_citadel_user_msg_player_lifetime_stat_info::Stat,
+    >,
     #[prost(uint64, optional, tag = "2")]
     pub match_id: ::core::option::Option<u64>,
     #[prost(bool, optional, tag = "3")]
@@ -535,7 +664,8 @@ pub struct CCitadelUserMsgPlayerLifetimeStatInfo {
     pub is_official_match: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgPlayerRespawned {
     #[prost(uint32, required, tag = "1", default = "16777215")]
     pub player_pawn: u32,
@@ -543,19 +673,26 @@ pub struct CCitadelUserMsgPlayerRespawned {
     pub facing_yaw: f32,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgPostMatchDetails {
     #[prost(bytes = "vec", optional, tag = "1")]
     pub match_details: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgPostProcessingAnim {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_owner: ::core::option::Option<i32>,
     #[prost(bool, optional, tag = "2")]
     pub clear_all_states: ::core::option::Option<bool>,
-    #[prost(enumeration = "PostProcessingGameStates", optional, tag = "3", default = "PostProcStateKilled")]
+    #[prost(
+        enumeration = "PostProcessingGameStates",
+        optional,
+        tag = "3",
+        default = "PostProcStateKilled"
+    )]
     pub state: ::core::option::Option<i32>,
     #[prost(float, optional, tag = "4")]
     pub start_time: ::core::option::Option<f32>,
@@ -569,7 +706,8 @@ pub struct CCitadelUserMsgPostProcessingAnim {
     pub scale: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgQuickResponse {
     #[prost(message, required, tag = "1")]
     pub ping_data: PingCommonData,
@@ -577,16 +715,24 @@ pub struct CCitadelUserMsgQuickResponse {
     pub responding_to_ping_message_id: ::core::option::Option<u32>,
     #[prost(int32, optional, tag = "3", default = "-1")]
     pub responding_to_player_slot: ::core::option::Option<i32>,
-    #[prost(enumeration = "CMsgLaneColor", optional, tag = "4", default = "KELaneColorInvalid")]
+    #[prost(
+        enumeration = "CMsgLaneColor",
+        optional,
+        tag = "4",
+        default = "KELaneColorInvalid"
+    )]
     pub lane_color: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgRecentDamageSummary {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub player_slot: ::core::option::Option<i32>,
     #[prost(message, repeated, tag = "2")]
-    pub damage_records: ::prost::alloc::vec::Vec<c_citadel_user_msg_recent_damage_summary::DamageRecord>,
+    pub damage_records: ::prost::alloc::vec::Vec<
+        c_citadel_user_msg_recent_damage_summary::DamageRecord,
+    >,
     #[prost(float, optional, tag = "3")]
     pub start_time: ::core::option::Option<f32>,
     #[prost(float, optional, tag = "4")]
@@ -596,10 +742,13 @@ pub struct CCitadelUserMsgRecentDamageSummary {
     #[prost(int32, optional, tag = "6")]
     pub lost_gold: ::core::option::Option<i32>,
     #[prost(message, repeated, tag = "7")]
-    pub modifier_records: ::prost::alloc::vec::Vec<c_citadel_user_msg_recent_damage_summary::ModifierRecord>,
+    pub modifier_records: ::prost::alloc::vec::Vec<
+        c_citadel_user_msg_recent_damage_summary::ModifierRecord,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgRejuvStatus {
     #[prost(int32, optional, tag = "1")]
     pub killing_team: ::core::option::Option<i32>,
@@ -611,7 +760,8 @@ pub struct CCitadelUserMsgRejuvStatus {
     pub event_type: i32,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgReturnIdol {
     #[prost(int32, optional, tag = "1")]
     pub location_index: ::core::option::Option<i32>,
@@ -621,7 +771,8 @@ pub struct CCitadelUserMsgReturnIdol {
     pub location_enabled: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgSeasonalAchievementUnlocked {
     #[prost(uint32, optional, tag = "1")]
     pub account_id: ::core::option::Option<u32>,
@@ -629,7 +780,8 @@ pub struct CCitadelUserMsgSeasonalAchievementUnlocked {
     pub hero_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgSetClientCameraAngles {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub player_slot: ::core::option::Option<i32>,
@@ -637,13 +789,15 @@ pub struct CCitadelUserMsgSetClientCameraAngles {
     pub camera_angles: ::core::option::Option<CMsgQAngle>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgSpectatorTeamChanged {
     #[prost(int32, optional, tag = "1")]
     pub teamnumber: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgStaminaDrained {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_victim: ::core::option::Option<i32>,
@@ -653,7 +807,8 @@ pub struct CCitadelUserMsgStaminaDrained {
     pub stamina_after: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgTeamMsg {
     #[prost(int32, required, tag = "1")]
     pub event_type: i32,
@@ -665,7 +820,8 @@ pub struct CCitadelUserMsgTeamMsg {
     pub player_controller: u32,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCitadelUserMsgTeamRewards {
     #[prost(uint32, optional, tag = "1")]
     pub xp: ::core::option::Option<u32>,
@@ -675,7 +831,8 @@ pub struct CCitadelUserMsgTeamRewards {
     pub winner: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CCitadelUserMsgTriggerDamageFlash {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub entindex_flash_victim: ::core::option::Option<i32>,
@@ -693,7 +850,8 @@ pub struct CCitadelUserMsgTriggerDamageFlash {
     pub flash_position: ::core::option::Option<CMsgVector>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCommunityClanAnnouncementInfo {
     #[prost(uint64, optional, tag = "1")]
     pub gid: ::core::option::Option<u64>,
@@ -721,7 +879,8 @@ pub struct CCommunityClanAnnouncementInfo {
     pub forum_topic_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CCommunityGetClanAnnouncementsRequest {
     #[prost(uint64, optional, tag = "1")]
     pub steamid: ::core::option::Option<u64>,
@@ -751,7 +910,8 @@ pub struct CCommunityGetClanAnnouncementsRequest {
     pub include_partner_events: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CCommunityGetClanAnnouncementsResponse {
     #[prost(uint32, optional, tag = "1")]
     pub maxchars: ::core::option::Option<u32>,
@@ -761,7 +921,8 @@ pub struct CCommunityGetClanAnnouncementsResponse {
     pub announcements: ::prost::alloc::vec::Vec<CCommunityClanAnnouncementInfo>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CExtraMsgBlock {
     #[prost(uint32, optional, tag = "1")]
     pub msg_type: ::core::option::Option<u32>,
@@ -773,13 +934,15 @@ pub struct CExtraMsgBlock {
     pub is_compressed: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CLobbyDataPostMatchSurvey {
     #[prost(message, repeated, tag = "1")]
     pub surveys: ::prost::alloc::vec::Vec<c_lobby_data_post_match_survey::PlayerSurvey>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CModifierTableEntry {
     #[prost(enumeration = "ModifierEntryType", required, tag = "1", default = "Active")]
     pub entry_type: i32,
@@ -871,7 +1034,8 @@ pub struct CModifierTableEntry {
     pub string4: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgAccountBookStats {
     #[prost(uint32, optional, tag = "1")]
     pub book_id: ::core::option::Option<u32>,
@@ -881,7 +1045,8 @@ pub struct CMsgAccountBookStats {
     pub book_max_xp: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgAccountHeroStats {
     #[prost(uint32, optional, tag = "1")]
     pub hero_id: ::core::option::Option<u32>,
@@ -897,7 +1062,8 @@ pub struct CMsgAccountHeroStats {
     pub medals_gold: ::prost::alloc::vec::Vec<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgAccountStats {
     #[prost(uint32, optional, tag = "1")]
     pub account_id: ::core::option::Option<u32>,
@@ -905,7 +1071,8 @@ pub struct CMsgAccountStats {
     pub stats: ::prost::alloc::vec::Vec<CMsgAccountHeroStats>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgAddItemToSocket {
     #[prost(uint64, optional, tag = "1")]
     pub item_item_id: ::core::option::Option<u64>,
@@ -913,7 +1080,8 @@ pub struct CMsgAddItemToSocket {
     pub gems_to_socket: ::prost::alloc::vec::Vec<CMsgAddItemToSocketData>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgAddItemToSocketData {
     #[prost(uint64, optional, tag = "1")]
     pub gem_item_id: ::core::option::Option<u64>,
@@ -921,17 +1089,24 @@ pub struct CMsgAddItemToSocketData {
     pub socket_index: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgAddItemToSocketResponse {
     #[prost(uint64, optional, tag = "1")]
     pub item_item_id: ::core::option::Option<u64>,
     #[prost(uint32, repeated, packed = "false", tag = "2")]
     pub updated_socket_index: ::prost::alloc::vec::Vec<u32>,
-    #[prost(enumeration = "c_msg_add_item_to_socket_response::EAddGem", optional, tag = "3", default = "KAddGemSucceeded")]
+    #[prost(
+        enumeration = "c_msg_add_item_to_socket_response::EAddGem",
+        optional,
+        tag = "3",
+        default = "KAddGemSucceeded"
+    )]
     pub response: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgAddSocket {
     #[prost(uint64, optional, tag = "1")]
     pub tool_item_id: ::core::option::Option<u64>,
@@ -941,17 +1116,24 @@ pub struct CMsgAddSocket {
     pub unusual: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgAddSocketResponse {
     #[prost(uint64, optional, tag = "1")]
     pub item_id: ::core::option::Option<u64>,
     #[prost(uint32, repeated, packed = "false", tag = "2")]
     pub updated_socket_index: ::prost::alloc::vec::Vec<u32>,
-    #[prost(enumeration = "c_msg_add_socket_response::EAddSocket", optional, tag = "3", default = "KAddSocketSucceeded")]
+    #[prost(
+        enumeration = "c_msg_add_socket_response::EAddSocket",
+        optional,
+        tag = "3",
+        default = "KAddSocketSucceeded"
+    )]
     pub response: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgAnyToGcReportAsserts {
     #[prost(uint32, optional, tag = "1")]
     pub version: ::core::option::Option<u32>,
@@ -961,13 +1143,15 @@ pub struct CMsgAnyToGcReportAsserts {
     pub match_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgAnyToGcReportAssertsResponse {
     #[prost(bool, optional, tag = "1")]
     pub success: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgApplyEggEssence {
     #[prost(uint64, optional, tag = "1")]
     pub essence_item_id: ::core::option::Option<u64>,
@@ -975,7 +1159,8 @@ pub struct CMsgApplyEggEssence {
     pub egg_item_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgApplyPennantUpgrade {
     #[prost(uint64, optional, tag = "1")]
     pub upgrade_item_id: ::core::option::Option<u64>,
@@ -983,13 +1168,15 @@ pub struct CMsgApplyPennantUpgrade {
     pub pennant_item_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgApplyRemoteConVars {
     #[prost(message, repeated, tag = "1")]
     pub con_vars: ::prost::alloc::vec::Vec<c_msg_apply_remote_con_vars::ConVar>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgApplyStrangePart {
     #[prost(uint64, optional, tag = "1")]
     pub strange_part_item_id: ::core::option::Option<u64>,
@@ -997,7 +1184,8 @@ pub struct CMsgApplyStrangePart {
     pub item_item_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CMsgBulletImpact {
     #[prost(message, optional, tag = "1")]
     pub trace_start: ::core::option::Option<CMsgVector>,
@@ -1021,7 +1209,8 @@ pub struct CMsgBulletImpact {
     pub shooter_ehandle: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgClientHello {
     #[prost(uint32, optional, tag = "1")]
     pub version: ::core::option::Option<u32>,
@@ -1029,7 +1218,12 @@ pub struct CMsgClientHello {
     pub socache_have_versions: ::prost::alloc::vec::Vec<CMsgSoCacheHaveVersion>,
     #[prost(uint32, optional, tag = "3")]
     pub client_session_need: ::core::option::Option<u32>,
-    #[prost(enumeration = "PartnerAccountType", optional, tag = "4", default = "PartnerNone")]
+    #[prost(
+        enumeration = "PartnerAccountType",
+        optional,
+        tag = "4",
+        default = "PartnerNone"
+    )]
     pub client_launcher: ::core::option::Option<i32>,
     #[prost(string, optional, tag = "5")]
     pub secret_key: ::core::option::Option<::prost::alloc::string::String>,
@@ -1071,7 +1265,8 @@ pub struct CMsgClientHello {
     pub platform_name: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgClientPingData {
     #[prost(fixed32, repeated, tag = "4")]
     pub relay_codes: ::prost::alloc::vec::Vec<u32>,
@@ -1085,23 +1280,30 @@ pub struct CMsgClientPingData {
     pub region_ping_failed_bitmask: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgClientToGcAggregateMetrics {
     #[prost(message, repeated, tag = "1")]
-    pub metrics: ::prost::alloc::vec::Vec<c_msg_client_to_gc_aggregate_metrics::SingleMetric>,
+    pub metrics: ::prost::alloc::vec::Vec<
+        c_msg_client_to_gc_aggregate_metrics::SingleMetric,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgClientToGcIntegrityStatus {
     #[prost(string, optional, tag = "1")]
     pub report: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(bool, optional, tag = "2")]
     pub secure_allowed: ::core::option::Option<bool>,
     #[prost(message, repeated, tag = "3")]
-    pub diagnostics: ::prost::alloc::vec::Vec<c_msg_client_to_gc_integrity_status::Keyvalue>,
+    pub diagnostics: ::prost::alloc::vec::Vec<
+        c_msg_client_to_gc_integrity_status::Keyvalue,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgClientWelcome {
     #[prost(uint32, optional, tag = "1")]
     pub version: ::core::option::Option<u32>,
@@ -1110,7 +1312,9 @@ pub struct CMsgClientWelcome {
     #[prost(message, repeated, tag = "3")]
     pub outofdate_subscribed_caches: ::prost::alloc::vec::Vec<CMsgSoCacheSubscribed>,
     #[prost(message, repeated, tag = "4")]
-    pub uptodate_subscribed_caches: ::prost::alloc::vec::Vec<CMsgSoCacheSubscriptionCheck>,
+    pub uptodate_subscribed_caches: ::prost::alloc::vec::Vec<
+        CMsgSoCacheSubscriptionCheck,
+    >,
     #[prost(message, optional, tag = "5")]
     pub location: ::core::option::Option<c_msg_client_welcome::Location>,
     #[prost(uint32, optional, tag = "9")]
@@ -1137,9 +1341,15 @@ pub struct CMsgClientWelcome {
     pub steam_learn_server_info: ::core::option::Option<CMsgSteamLearnServerInfo>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgConnectionStatus {
-    #[prost(enumeration = "GcConnectionStatus", optional, tag = "1", default = "HaveSession")]
+    #[prost(
+        enumeration = "GcConnectionStatus",
+        optional,
+        tag = "1",
+        default = "HaveSession"
+    )]
     pub status: ::core::option::Option<i32>,
     #[prost(uint32, optional, tag = "2")]
     pub client_session_need: ::core::option::Option<u32>,
@@ -1153,9 +1363,15 @@ pub struct CMsgConnectionStatus {
     pub estimated_wait_seconds_remaining: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgCustomGameInstallStatus {
-    #[prost(enumeration = "ECustomGameInstallStatus", optional, tag = "1", default = "KECustomGameInstallStatusUnknown")]
+    #[prost(
+        enumeration = "ECustomGameInstallStatus",
+        optional,
+        tag = "1",
+        default = "KECustomGameInstallStatusUnknown"
+    )]
     pub status: ::core::option::Option<i32>,
     #[prost(string, optional, tag = "2")]
     pub message: ::core::option::Option<::prost::alloc::string::String>,
@@ -1163,10 +1379,12 @@ pub struct CMsgCustomGameInstallStatus {
     pub latest_timestamp_from_steam: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgDisableSatVolumesEvent {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CMsgEnableSatVolumesEvent {
     #[prost(uint32, optional, tag = "1")]
     pub mode: ::core::option::Option<u32>,
@@ -1180,13 +1398,15 @@ pub struct CMsgEnableSatVolumesEvent {
     pub outline_color: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgEquippedItemList {
     #[prost(message, repeated, tag = "1")]
     pub items: ::prost::alloc::vec::Vec<CsoEconItem>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgExtractGems {
     #[prost(uint64, optional, tag = "1")]
     pub tool_item_id: ::core::option::Option<u64>,
@@ -1196,15 +1416,22 @@ pub struct CMsgExtractGems {
     pub item_socket_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgExtractGemsResponse {
     #[prost(uint64, optional, tag = "1")]
     pub item_id: ::core::option::Option<u64>,
-    #[prost(enumeration = "c_msg_extract_gems_response::EExtractGems", optional, tag = "2", default = "KExtractGemsSucceeded")]
+    #[prost(
+        enumeration = "c_msg_extract_gems_response::EExtractGems",
+        optional,
+        tag = "2",
+        default = "KExtractGemsSucceeded"
+    )]
     pub response: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgFireBullets {
     #[prost(message, optional, tag = "1")]
     pub origin: ::core::option::Option<CMsgVector>,
@@ -1227,7 +1454,9 @@ pub struct CMsgFireBullets {
     #[prost(message, optional, tag = "12")]
     pub tracer_replacement: ::core::option::Option<c_msg_fire_bullets::TracerAssignment>,
     #[prost(message, repeated, tag = "13")]
-    pub tracer_additional: ::prost::alloc::vec::Vec<c_msg_fire_bullets::TracerAssignment>,
+    pub tracer_additional: ::prost::alloc::vec::Vec<
+        c_msg_fire_bullets::TracerAssignment,
+    >,
     #[prost(message, optional, tag = "14")]
     pub angles_original: ::core::option::Option<CMsgQAngle>,
     #[prost(uint32, optional, tag = "15")]
@@ -1252,7 +1481,8 @@ pub struct CMsgFireBullets {
     pub muzzle_number: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CMsgGcAccountData {
     #[prost(uint32, optional, tag = "1")]
     pub account_id: ::core::option::Option<u32>,
@@ -1260,13 +1490,15 @@ pub struct CMsgGcAccountData {
     pub cheater_report_score: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgGcAdditionalWelcomeMsgList {
     #[prost(message, repeated, tag = "1")]
     pub welcome_messages: ::prost::alloc::vec::Vec<CExtraMsgBlock>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcAssertJobData {
     #[prost(string, optional, tag = "1")]
     pub message_type: ::core::option::Option<::prost::alloc::string::String>,
@@ -1274,22 +1506,26 @@ pub struct CMsgGcAssertJobData {
     pub message_data: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcClientPing {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcClientVersionUpdated {
     #[prost(uint32, optional, tag = "1")]
     pub client_version: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcConCommand {
     #[prost(string, optional, tag = "1")]
     pub command: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcMultiplexMessage {
     #[prost(uint32, optional, tag = "1")]
     pub msgtype: ::core::option::Option<u32>,
@@ -1299,13 +1535,15 @@ pub struct CMsgGcMultiplexMessage {
     pub steamids: ::prost::alloc::vec::Vec<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcRequestSubGcSessionInfo {
     #[prost(fixed64, optional, tag = "1")]
     pub steamid: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcRequestSubGcSessionInfoResponse {
     #[prost(fixed32, optional, tag = "1")]
     pub ip: ::core::option::Option<u32>,
@@ -1317,31 +1555,36 @@ pub struct CMsgGcRequestSubGcSessionInfoResponse {
     pub success: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcServerVersionUpdated {
     #[prost(uint32, optional, tag = "1")]
     pub server_version: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcStorePurchaseCancel {
     #[prost(uint64, optional, tag = "1")]
     pub txn_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcStorePurchaseCancelResponse {
     #[prost(uint32, optional, tag = "1")]
     pub result: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcStorePurchaseFinalize {
     #[prost(uint64, optional, tag = "1")]
     pub txn_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcStorePurchaseFinalizeResponse {
     #[prost(uint32, optional, tag = "1")]
     pub result: ::core::option::Option<u32>,
@@ -1349,7 +1592,8 @@ pub struct CMsgGcStorePurchaseFinalizeResponse {
     pub item_ids: ::prost::alloc::vec::Vec<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgGcStorePurchaseInit {
     #[prost(string, optional, tag = "1")]
     pub country: ::core::option::Option<::prost::alloc::string::String>,
@@ -1361,7 +1605,8 @@ pub struct CMsgGcStorePurchaseInit {
     pub line_items: ::prost::alloc::vec::Vec<CgcStorePurchaseInitLineItem>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcStorePurchaseInitResponse {
     #[prost(int32, optional, tag = "1")]
     pub result: ::core::option::Option<i32>,
@@ -1369,19 +1614,22 @@ pub struct CMsgGcStorePurchaseInitResponse {
     pub txn_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CMsgGcToClientAggregateMetricsBackoff {
     #[prost(float, optional, tag = "1")]
     pub upload_rate_modifier: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgGcToClientApplyRemoteConVars {
     #[prost(message, optional, tag = "1")]
     pub msg: ::core::option::Option<CMsgApplyRemoteConVars>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToClientPollConvarRequest {
     #[prost(string, optional, tag = "1")]
     pub convar_name: ::core::option::Option<::prost::alloc::string::String>,
@@ -1389,7 +1637,8 @@ pub struct CMsgGcToClientPollConvarRequest {
     pub poll_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToClientPollConvarResponse {
     #[prost(uint32, optional, tag = "1")]
     pub poll_id: ::core::option::Option<u32>,
@@ -1397,7 +1646,8 @@ pub struct CMsgGcToClientPollConvarResponse {
     pub convar_value: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToClientPollFileRequest {
     #[prost(string, optional, tag = "1")]
     pub file_name: ::core::option::Option<::prost::alloc::string::String>,
@@ -1407,7 +1657,8 @@ pub struct CMsgGcToClientPollFileRequest {
     pub poll_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToClientPollFileResponse {
     #[prost(uint32, optional, tag = "1")]
     pub poll_id: ::core::option::Option<u32>,
@@ -1417,16 +1668,19 @@ pub struct CMsgGcToClientPollFileResponse {
     pub file_crc: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToClientRequestDropped {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcBannedWordListUpdated {
     #[prost(uint32, optional, tag = "1")]
     pub group_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcDirtySdoCache {
     #[prost(uint32, optional, tag = "1")]
     pub sdo_type: ::core::option::Option<u32>,
@@ -1434,7 +1688,8 @@ pub struct CMsgGcToGcDirtySdoCache {
     pub key_uint64: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcForwardAccountDetails {
     #[prost(fixed64, optional, tag = "1")]
     pub steamid: ::core::option::Option<u64>,
@@ -1444,7 +1699,8 @@ pub struct CMsgGcToGcForwardAccountDetails {
     pub age_seconds: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcLoadSessionSoCache {
     #[prost(uint32, optional, tag = "1")]
     pub account_id: ::core::option::Option<u32>,
@@ -1452,10 +1708,12 @@ pub struct CMsgGcToGcLoadSessionSoCache {
     pub forward_account_details: ::core::option::Option<CMsgGcToGcForwardAccountDetails>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcLoadSessionSoCacheResponse {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcMasterBroadcastMessage {
     #[prost(uint32, optional, tag = "1")]
     pub users_per_second: ::core::option::Option<u32>,
@@ -1469,7 +1727,8 @@ pub struct CMsgGcToGcMasterBroadcastMessage {
     pub msg_data: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcMasterDestroyCache {
     #[prost(uint32, optional, tag = "1")]
     pub soid_type: ::core::option::Option<u32>,
@@ -1477,7 +1736,8 @@ pub struct CMsgGcToGcMasterDestroyCache {
     pub soid_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcMasterSubscribeToCache {
     #[prost(uint32, optional, tag = "1")]
     pub soid_type: ::core::option::Option<u32>,
@@ -1489,16 +1749,19 @@ pub struct CMsgGcToGcMasterSubscribeToCache {
     pub steam_ids: ::prost::alloc::vec::Vec<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcMasterSubscribeToCacheAsync {
     #[prost(message, optional, tag = "1")]
     pub subscribe_msg: ::core::option::Option<CMsgGcToGcMasterSubscribeToCache>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcMasterSubscribeToCacheResponse {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcMasterUnsubscribeFromCache {
     #[prost(uint32, optional, tag = "1")]
     pub soid_type: ::core::option::Option<u32>,
@@ -1510,7 +1773,8 @@ pub struct CMsgGcToGcMasterUnsubscribeFromCache {
     pub steam_ids: ::prost::alloc::vec::Vec<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcPerformManualOp {
     #[prost(uint64, optional, tag = "1")]
     pub op_id: ::core::option::Option<u64>,
@@ -1518,7 +1782,8 @@ pub struct CMsgGcToGcPerformManualOp {
     pub group_code: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcPerformManualOpCompleted {
     #[prost(bool, optional, tag = "1")]
     pub success: ::core::option::Option<bool>,
@@ -1526,28 +1791,33 @@ pub struct CMsgGcToGcPerformManualOpCompleted {
     pub source_gc: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcReloadServerRegionSettings {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcSubGcStarting {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub dir_index: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcUniverseStartup {
     #[prost(bool, optional, tag = "1")]
     pub is_initial_startup: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcUniverseStartupResponse {
     #[prost(int32, optional, tag = "1")]
     pub eresult: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcUpdateSessionStats {
     #[prost(uint32, optional, tag = "1")]
     pub user_sessions: ::core::option::Option<u32>,
@@ -1557,16 +1827,19 @@ pub struct CMsgGcToGcUpdateSessionStats {
     pub in_logon_surge: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcUpdateSqlKeyValue {
     #[prost(string, optional, tag = "1")]
     pub key_name: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcWebApiAccountChanged {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgGcToGcsoCacheSubscribe {
     #[prost(fixed64, optional, tag = "1")]
     pub subscriber: ::core::option::Option<u64>,
@@ -1575,12 +1848,15 @@ pub struct CMsgGcToGcsoCacheSubscribe {
     #[prost(fixed64, optional, tag = "3")]
     pub sync_version: ::core::option::Option<u64>,
     #[prost(message, repeated, tag = "4")]
-    pub have_versions: ::prost::alloc::vec::Vec<c_msg_gc_to_gcso_cache_subscribe::CMsgHaveVersions>,
+    pub have_versions: ::prost::alloc::vec::Vec<
+        c_msg_gc_to_gcso_cache_subscribe::CMsgHaveVersions,
+    >,
     #[prost(uint32, optional, tag = "5")]
     pub subscribe_to_type: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToGcsoCacheUnsubscribe {
     #[prost(fixed64, optional, tag = "1")]
     pub subscriber: ::core::option::Option<u64>,
@@ -1590,31 +1866,38 @@ pub struct CMsgGcToGcsoCacheUnsubscribe {
     pub unsubscribe_from_type: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgGcToServerApplyRemoteConVars {
     #[prost(message, optional, tag = "1")]
     pub msg: ::core::option::Option<CMsgApplyRemoteConVars>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgGcToServerSteamLearnAccessTokensChanged {
     #[prost(message, optional, tag = "1")]
     pub access_tokens: ::core::option::Option<CMsgSteamLearnAccessTokens>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgGcToServerSteamLearnUseHttp {
     #[prost(bool, optional, tag = "1")]
     pub use_http: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgGcUpdateSubGcSessionInfo {
     #[prost(message, repeated, tag = "1")]
-    pub updates: ::prost::alloc::vec::Vec<c_msg_gc_update_sub_gc_session_info::CMsgUpdate>,
+    pub updates: ::prost::alloc::vec::Vec<
+        c_msg_gc_update_sub_gc_session_info::CMsgUpdate,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgHeroBuild {
     #[prost(uint32, optional, tag = "1")]
     pub hero_build_id: ::core::option::Option<u32>,
@@ -1644,7 +1927,8 @@ pub struct CMsgHeroBuild {
     pub publish_timestamp: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgHeroBuildPreference {
     #[prost(bool, optional, tag = "1")]
     pub favorited: ::core::option::Option<bool>,
@@ -1654,13 +1938,15 @@ pub struct CMsgHeroBuildPreference {
     pub reported: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgHeroSelectionMatchInfo {
     #[prost(message, repeated, tag = "1")]
     pub hero_selections: ::prost::alloc::vec::Vec<c_msg_hero_selection_match_info::Hero>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgInferenceIterateBeamSearch {
     #[prost(uint32, optional, tag = "1")]
     pub beam_length: ::core::option::Option<u32>,
@@ -1671,7 +1957,9 @@ pub struct CMsgInferenceIterateBeamSearch {
     #[prost(uint32, optional, tag = "4")]
     pub next_item_count: ::core::option::Option<u32>,
     #[prost(message, repeated, tag = "5")]
-    pub item_scalars: ::prost::alloc::vec::Vec<c_msg_inference_iterate_beam_search::CustomItemScalar>,
+    pub item_scalars: ::prost::alloc::vec::Vec<
+        c_msg_inference_iterate_beam_search::CustomItemScalar,
+    >,
     #[prost(uint32, optional, tag = "7")]
     pub item_sequence_end: ::core::option::Option<u32>,
     #[prost(float, optional, tag = "8")]
@@ -1680,7 +1968,8 @@ pub struct CMsgInferenceIterateBeamSearch {
     pub repeat_multiplier: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgInvitationCreated {
     #[prost(uint64, optional, tag = "1")]
     pub group_id: ::core::option::Option<u64>,
@@ -1690,7 +1979,8 @@ pub struct CMsgInvitationCreated {
     pub user_offline: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgInviteToLobby {
     #[prost(fixed64, optional, tag = "1")]
     pub steam_id: ::core::option::Option<u64>,
@@ -1698,7 +1988,8 @@ pub struct CMsgInviteToLobby {
     pub client_version: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgInviteToParty {
     #[prost(fixed64, optional, tag = "1")]
     pub steam_id: ::core::option::Option<u64>,
@@ -1712,7 +2003,8 @@ pub struct CMsgInviteToParty {
     pub ping_data: ::core::option::Option<CMsgClientPingData>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgItemAcknowledged {
     #[prost(uint32, optional, tag = "1")]
     pub account_id: ::core::option::Option<u32>,
@@ -1728,19 +2020,22 @@ pub struct CMsgItemAcknowledged {
     pub origin: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgKickFromParty {
     #[prost(fixed64, optional, tag = "1")]
     pub steam_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgLanServerAvailable {
     #[prost(fixed64, optional, tag = "1")]
     pub lobby_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CMsgLaneColor {
     KELaneColorInvalid = 0,
@@ -1750,10 +2045,12 @@ pub enum CMsgLaneColor {
     KELaneColorPurple = 6,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgLeaveParty {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgLobbyInviteResponse {
     #[prost(fixed64, optional, tag = "1")]
     pub lobby_id: ::core::option::Option<u64>,
@@ -1767,7 +2064,8 @@ pub struct CMsgLobbyInviteResponse {
     pub custom_game_timestamp: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgMapLine {
     #[prost(int32, optional, tag = "1")]
     pub x: ::core::option::Option<i32>,
@@ -1777,7 +2075,8 @@ pub struct CMsgMapLine {
     pub initial: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgMatchMetaData {
     #[prost(uint32, optional, tag = "1")]
     pub version: ::core::option::Option<u32>,
@@ -1787,23 +2086,30 @@ pub struct CMsgMatchMetaData {
     pub match_id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgMatchMetaDataContents {
     #[prost(message, optional, tag = "2")]
     pub match_info: ::core::option::Option<c_msg_match_meta_data_contents::MatchInfo>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgMatchPlayerDamageMatrix {
     #[prost(message, repeated, tag = "1")]
-    pub damage_dealers: ::prost::alloc::vec::Vec<c_msg_match_player_damage_matrix::DamageDealer>,
+    pub damage_dealers: ::prost::alloc::vec::Vec<
+        c_msg_match_player_damage_matrix::DamageDealer,
+    >,
     #[prost(uint32, repeated, tag = "2")]
     pub sample_time_s: ::prost::alloc::vec::Vec<u32>,
     #[prost(message, optional, tag = "3")]
-    pub source_details: ::core::option::Option<c_msg_match_player_damage_matrix::SourceDetails>,
+    pub source_details: ::core::option::Option<
+        c_msg_match_player_damage_matrix::SourceDetails,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgMatchPlayerPathsData {
     #[prost(uint32, optional, tag = "1")]
     pub version: ::core::option::Option<u32>,
@@ -1817,39 +2123,70 @@ pub struct CMsgMatchPlayerPathsData {
     pub paths: ::prost::alloc::vec::Vec<c_msg_match_player_paths_data::Path>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CMsgParticleSystemManager {
-    #[prost(enumeration = "ParticleSystemManagerMessage", required, tag = "1", default = "ParticleSystemManagerEventCreate")]
+    #[prost(
+        enumeration = "ParticleSystemManagerMessage",
+        required,
+        tag = "1",
+        default = "ParticleSystemManagerEventCreate"
+    )]
     pub r#type: i32,
     #[prost(uint32, required, tag = "2")]
     pub index: u32,
     #[prost(message, optional, tag = "3")]
-    pub create_particle: ::core::option::Option<c_msg_particle_system_manager::CreateParticle>,
+    pub create_particle: ::core::option::Option<
+        c_msg_particle_system_manager::CreateParticle,
+    >,
     #[prost(message, optional, tag = "4")]
-    pub destroy_particle: ::core::option::Option<c_msg_particle_system_manager::DestroyParticle>,
+    pub destroy_particle: ::core::option::Option<
+        c_msg_particle_system_manager::DestroyParticle,
+    >,
     #[prost(message, optional, tag = "5")]
-    pub destroy_particle_involving: ::core::option::Option<c_msg_particle_system_manager::DestroyParticleInvolving>,
+    pub destroy_particle_involving: ::core::option::Option<
+        c_msg_particle_system_manager::DestroyParticleInvolving,
+    >,
     #[prost(message, optional, tag = "6")]
-    pub release_particle_index: ::core::option::Option<c_msg_particle_system_manager::ReleaseParticleIndex>,
+    pub release_particle_index: ::core::option::Option<
+        c_msg_particle_system_manager::ReleaseParticleIndex,
+    >,
     #[prost(message, optional, tag = "7")]
-    pub update_particle: ::core::option::Option<c_msg_particle_system_manager::UpdateParticle>,
+    pub update_particle: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticle,
+    >,
     #[prost(message, optional, tag = "8")]
-    pub update_particle_fwd: ::core::option::Option<c_msg_particle_system_manager::UpdateParticleFwd>,
+    pub update_particle_fwd: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticleFwd,
+    >,
     #[prost(message, optional, tag = "9")]
-    pub update_particle_orient: ::core::option::Option<c_msg_particle_system_manager::UpdateParticleOrient>,
+    pub update_particle_orient: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticleOrient,
+    >,
     #[prost(message, optional, tag = "10")]
-    pub update_particle_fallback: ::core::option::Option<c_msg_particle_system_manager::UpdateParticleFallback>,
+    pub update_particle_fallback: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticleFallback,
+    >,
     #[prost(message, optional, tag = "11")]
-    pub update_particle_offset: ::core::option::Option<c_msg_particle_system_manager::UpdateParticleOffset>,
+    pub update_particle_offset: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticleOffset,
+    >,
     #[prost(message, optional, tag = "12")]
-    pub update_particle_ent: ::core::option::Option<c_msg_particle_system_manager::UpdateParticleEnt>,
+    pub update_particle_ent: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticleEnt,
+    >,
     #[prost(message, optional, tag = "13")]
-    pub update_particle_frozen: ::core::option::Option<c_msg_particle_system_manager::UpdateParticleFrozen>,
+    pub update_particle_frozen: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticleFrozen,
+    >,
     #[prost(message, optional, tag = "14")]
-    pub update_particle_should_draw: ::core::option::Option<c_msg_particle_system_manager::UpdateParticleShouldDraw>,
+    pub update_particle_should_draw: ::core::option::Option<
+        c_msg_particle_system_manager::UpdateParticleShouldDraw,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgPartyInviteResponse {
     #[prost(uint64, optional, tag = "1")]
     pub party_id: ::core::option::Option<u64>,
@@ -1861,7 +2198,8 @@ pub struct CMsgPartyInviteResponse {
     pub ping_data: ::core::option::Option<CMsgClientPingData>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CMsgPlaceSatVolumeEvent {
     #[prost(message, optional, tag = "1")]
     pub position: ::core::option::Option<CMsgVector>,
@@ -1885,7 +2223,8 @@ pub struct CMsgPlaceSatVolumeEvent {
     pub volume_id: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgPlayerAnimEvent {
     #[prost(fixed32, optional, tag = "1", default = "16777215")]
     pub player: ::core::option::Option<u32>,
@@ -1895,7 +2234,8 @@ pub struct CMsgPlayerAnimEvent {
     pub data: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgPlayerHeroData {
     #[prost(uint32, optional, tag = "1")]
     pub hero_xp: ::core::option::Option<u32>,
@@ -1903,7 +2243,8 @@ pub struct CMsgPlayerHeroData {
     pub hero_equips: ::core::option::Option<CMsgEquippedItemList>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgProtoBufHeader {
     #[prost(fixed64, optional, tag = "1")]
     pub client_steam_id: ::core::option::Option<u64>,
@@ -1921,13 +2262,19 @@ pub struct CMsgProtoBufHeader {
     pub eresult: ::core::option::Option<i32>,
     #[prost(string, optional, tag = "14")]
     pub error_message: ::core::option::Option<::prost::alloc::string::String>,
-    #[prost(enumeration = "GcProtoBufMsgSrc", optional, tag = "200", default = "Unspecified")]
+    #[prost(
+        enumeration = "GcProtoBufMsgSrc",
+        optional,
+        tag = "200",
+        default = "Unspecified"
+    )]
     pub gc_msg_src: ::core::option::Option<i32>,
     #[prost(int32, optional, tag = "201", default = "-1")]
     pub gc_dir_index_source: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgRegionPingTimesClient {
     #[prost(fixed32, repeated, tag = "1")]
     pub data_center_codes: ::prost::alloc::vec::Vec<u32>,
@@ -1935,7 +2282,8 @@ pub struct CMsgRegionPingTimesClient {
     pub ping_times: ::prost::alloc::vec::Vec<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgRemoveBullet {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub shooter_entindex: ::core::option::Option<i32>,
@@ -1945,13 +2293,15 @@ pub struct CMsgRemoveBullet {
     pub bullet_index: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgRemoveSatVolumeEvent {
     #[prost(int32, optional, tag = "1")]
     pub volume_id: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgResetStrangeGemCount {
     #[prost(uint64, optional, tag = "1")]
     pub item_item_id: ::core::option::Option<u64>,
@@ -1959,13 +2309,20 @@ pub struct CMsgResetStrangeGemCount {
     pub socket_index: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgResetStrangeGemCountResponse {
-    #[prost(enumeration = "c_msg_reset_strange_gem_count_response::EResetGem", optional, tag = "1", default = "KResetGemSucceeded")]
+    #[prost(
+        enumeration = "c_msg_reset_strange_gem_count_response::EResetGem",
+        optional,
+        tag = "1",
+        default = "KResetGemSucceeded"
+    )]
     pub response: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgScreenTextPretty {
     #[prost(float, optional, tag = "1")]
     pub x_pos: ::core::option::Option<f32>,
@@ -1993,7 +2350,8 @@ pub struct CMsgScreenTextPretty {
     pub bold_font: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSdoAssert {
     #[prost(int32, optional, tag = "1")]
     pub sdo_type: ::core::option::Option<i32>,
@@ -2001,10 +2359,12 @@ pub struct CMsgSdoAssert {
     pub requests: ::prost::alloc::vec::Vec<c_msg_sdo_assert::Request>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSdoNoMemcached {}
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSerializedSoCache {
     #[prost(uint32, optional, tag = "1")]
     pub file_version: ::core::option::Option<u32>,
@@ -2014,13 +2374,15 @@ pub struct CMsgSerializedSoCache {
     pub gc_socache_file_version: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgServerAvailable {
     #[prost(message, optional, tag = "1")]
     pub custom_game_install_status: ::core::option::Option<CMsgCustomGameInstallStatus>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct CMsgServerRequestedTracer {
     #[prost(message, optional, tag = "1")]
     pub origin: ::core::option::Option<CMsgVector>,
@@ -2034,13 +2396,15 @@ pub struct CMsgServerRequestedTracer {
     pub dps: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSetItemPositions {
     #[prost(message, repeated, tag = "1")]
     pub item_positions: ::prost::alloc::vec::Vec<c_msg_set_item_positions::ItemPosition>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoCacheHaveVersion {
     #[prost(message, optional, tag = "1")]
     pub soid: ::core::option::Option<CMsgSoidOwner>,
@@ -2052,7 +2416,8 @@ pub struct CMsgSoCacheHaveVersion {
     pub cached_file_version: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSoCacheSubscribed {
     #[prost(message, repeated, tag = "2")]
     pub objects: ::prost::alloc::vec::Vec<c_msg_so_cache_subscribed::SubscribedType>,
@@ -2068,7 +2433,8 @@ pub struct CMsgSoCacheSubscribed {
     pub sync_version: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoCacheSubscribedUpToDate {
     #[prost(fixed64, optional, tag = "1")]
     pub version: ::core::option::Option<u64>,
@@ -2082,7 +2448,8 @@ pub struct CMsgSoCacheSubscribedUpToDate {
     pub sync_version: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoCacheSubscriptionCheck {
     #[prost(fixed64, optional, tag = "2")]
     pub version: ::core::option::Option<u64>,
@@ -2096,41 +2463,50 @@ pub struct CMsgSoCacheSubscriptionCheck {
     pub sync_version: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoCacheSubscriptionRefresh {
     #[prost(message, optional, tag = "2")]
     pub owner_soid: ::core::option::Option<CMsgSoidOwner>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoCacheUnsubscribed {
     #[prost(message, optional, tag = "2")]
     pub owner_soid: ::core::option::Option<CMsgSoidOwner>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoCacheVersion {
     #[prost(fixed64, optional, tag = "1")]
     pub version: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSoMultipleObjects {
     #[prost(message, repeated, tag = "2")]
-    pub objects_modified: ::prost::alloc::vec::Vec<c_msg_so_multiple_objects::SingleObject>,
+    pub objects_modified: ::prost::alloc::vec::Vec<
+        c_msg_so_multiple_objects::SingleObject,
+    >,
     #[prost(fixed64, optional, tag = "3")]
     pub version: ::core::option::Option<u64>,
     #[prost(message, repeated, tag = "4")]
     pub objects_added: ::prost::alloc::vec::Vec<c_msg_so_multiple_objects::SingleObject>,
     #[prost(message, repeated, tag = "5")]
-    pub objects_removed: ::prost::alloc::vec::Vec<c_msg_so_multiple_objects::SingleObject>,
+    pub objects_removed: ::prost::alloc::vec::Vec<
+        c_msg_so_multiple_objects::SingleObject,
+    >,
     #[prost(message, optional, tag = "6")]
     pub owner_soid: ::core::option::Option<CMsgSoidOwner>,
     #[prost(uint32, optional, tag = "7")]
     pub service_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoSingleObject {
     #[prost(int32, optional, tag = "2")]
     pub type_id: ::core::option::Option<i32>,
@@ -2144,7 +2520,8 @@ pub struct CMsgSoSingleObject {
     pub service_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSoidOwner {
     #[prost(uint32, optional, tag = "1")]
     pub r#type: ::core::option::Option<u32>,
@@ -2152,65 +2529,108 @@ pub struct CMsgSoidOwner {
     pub id: ::core::option::Option<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSortItems {
     #[prost(uint32, optional, tag = "1")]
     pub sort_type: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgStartFindingMatchInfo {
     #[prost(string, optional, tag = "1")]
     pub server_search_key: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(string, optional, tag = "2")]
     pub server_command_string: ::core::option::Option<::prost::alloc::string::String>,
-    #[prost(enumeration = "ECitadelMatchMode", optional, tag = "3", default = "KECitadelMatchModeInvalid")]
+    #[prost(
+        enumeration = "ECitadelMatchMode",
+        optional,
+        tag = "3",
+        default = "KECitadelMatchModeInvalid"
+    )]
     pub match_mode: ::core::option::Option<i32>,
-    #[prost(enumeration = "ECitadelGameMode", optional, tag = "5", default = "KECitadelGameModeInvalid")]
+    #[prost(
+        enumeration = "ECitadelGameMode",
+        optional,
+        tag = "5",
+        default = "KECitadelGameModeInvalid"
+    )]
     pub game_mode: ::core::option::Option<i32>,
-    #[prost(enumeration = "ECitadelBotDifficulty", optional, tag = "7", default = "KECitadelBotDifficultyNone")]
+    #[prost(
+        enumeration = "ECitadelBotDifficulty",
+        optional,
+        tag = "7",
+        default = "KECitadelBotDifficultyNone"
+    )]
     pub bot_difficulty: ::core::option::Option<i32>,
-    #[prost(enumeration = "ECitadelRegionMode", optional, tag = "8", default = "KECitadelRegionModeRow")]
+    #[prost(
+        enumeration = "ECitadelRegionMode",
+        optional,
+        tag = "8",
+        default = "KECitadelRegionModeRow"
+    )]
     pub region_mode: ::core::option::Option<i32>,
     #[prost(bool, optional, tag = "9")]
     pub prefer_solo_only: ::core::option::Option<bool>,
-    #[prost(enumeration = "ECitadelMmPreference", optional, tag = "10", default = "KECitadelMmPreferenceInvalid")]
+    #[prost(
+        enumeration = "ECitadelMmPreference",
+        optional,
+        tag = "10",
+        default = "KECitadelMmPreferenceInvalid"
+    )]
     pub mm_preference: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnAccessTokens {
     #[prost(string, optional, tag = "1")]
-    pub register_data_source_access_token: ::core::option::Option<::prost::alloc::string::String>,
+    pub register_data_source_access_token: ::core::option::Option<
+        ::prost::alloc::string::String,
+    >,
     #[prost(message, repeated, tag = "2")]
-    pub cache_data_access_tokens: ::prost::alloc::vec::Vec<c_msg_steam_learn_access_tokens::CacheDataAccessToken>,
+    pub cache_data_access_tokens: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_access_tokens::CacheDataAccessToken,
+    >,
     #[prost(message, repeated, tag = "3")]
-    pub snapshot_project_access_tokens: ::prost::alloc::vec::Vec<c_msg_steam_learn_access_tokens::SnapshotProjectAccessToken>,
+    pub snapshot_project_access_tokens: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_access_tokens::SnapshotProjectAccessToken,
+    >,
     #[prost(message, repeated, tag = "4")]
-    pub inference_access_tokens: ::prost::alloc::vec::Vec<c_msg_steam_learn_access_tokens::InferenceAccessToken>,
+    pub inference_access_tokens: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_access_tokens::InferenceAccessToken,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnBatchOperationRequest {
     #[prost(message, repeated, tag = "1")]
     pub cache_data_requests: ::prost::alloc::vec::Vec<CMsgSteamLearnCacheDataRequest>,
     #[prost(message, repeated, tag = "2")]
-    pub snapshot_requests: ::prost::alloc::vec::Vec<CMsgSteamLearnSnapshotProjectRequest>,
+    pub snapshot_requests: ::prost::alloc::vec::Vec<
+        CMsgSteamLearnSnapshotProjectRequest,
+    >,
     #[prost(message, repeated, tag = "3")]
     pub inference_requests: ::prost::alloc::vec::Vec<CMsgSteamLearnInferenceRequest>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnBatchOperationResponse {
     #[prost(message, repeated, tag = "1")]
     pub cache_data_responses: ::prost::alloc::vec::Vec<CMsgSteamLearnCacheDataResponse>,
     #[prost(message, repeated, tag = "2")]
-    pub snapshot_responses: ::prost::alloc::vec::Vec<CMsgSteamLearnSnapshotProjectResponse>,
+    pub snapshot_responses: ::prost::alloc::vec::Vec<
+        CMsgSteamLearnSnapshotProjectResponse,
+    >,
     #[prost(message, repeated, tag = "3")]
     pub inference_responses: ::prost::alloc::vec::Vec<CMsgSteamLearnInferenceResponse>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnCacheDataRequest {
     #[prost(string, optional, tag = "1")]
     pub access_token: ::core::option::Option<::prost::alloc::string::String>,
@@ -2218,13 +2638,20 @@ pub struct CMsgSteamLearnCacheDataRequest {
     pub data: ::core::option::Option<CMsgSteamLearnData>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSteamLearnCacheDataResponse {
-    #[prost(enumeration = "ESteamLearnCacheDataResult", optional, tag = "1", default = "SteamlearnCacheDataError")]
+    #[prost(
+        enumeration = "ESteamLearnCacheDataResult",
+        optional,
+        tag = "1",
+        default = "SteamlearnCacheDataError"
+    )]
     pub cache_data_result: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnData {
     #[prost(uint32, optional, tag = "1")]
     pub data_source_id: ::core::option::Option<u32>,
@@ -2234,7 +2661,8 @@ pub struct CMsgSteamLearnData {
     pub data_object: ::core::option::Option<CMsgSteamLearnDataObject>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnDataElement {
     #[prost(string, optional, tag = "1")]
     pub name: ::core::option::Option<::prost::alloc::string::String>,
@@ -2250,19 +2678,22 @@ pub struct CMsgSteamLearnDataElement {
     pub data_objects: ::prost::alloc::vec::Vec<CMsgSteamLearnDataObject>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnDataList {
     #[prost(message, repeated, tag = "1")]
     pub data: ::prost::alloc::vec::Vec<CMsgSteamLearnData>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnDataObject {
     #[prost(message, repeated, tag = "1")]
     pub elements: ::prost::alloc::vec::Vec<CMsgSteamLearnDataElement>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnDataSource {
     #[prost(uint32, optional, tag = "1")]
     pub id: ::core::option::Option<u32>,
@@ -2280,11 +2711,17 @@ pub struct CMsgSteamLearnDataSource {
     pub cache_duration_seconds: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnDataSourceDescElement {
     #[prost(string, optional, tag = "1")]
     pub name: ::core::option::Option<::prost::alloc::string::String>,
-    #[prost(enumeration = "ESteamLearnDataType", optional, tag = "2", default = "SteamlearnDatatypeInvalid")]
+    #[prost(
+        enumeration = "ESteamLearnDataType",
+        optional,
+        tag = "2",
+        default = "SteamlearnDatatypeInvalid"
+    )]
     pub data_type: ::core::option::Option<i32>,
     #[prost(message, optional, tag = "3")]
     pub object: ::core::option::Option<CMsgSteamLearnDataSourceDescObject>,
@@ -2292,33 +2729,45 @@ pub struct CMsgSteamLearnDataSourceDescElement {
     pub count: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnDataSourceDescObject {
     #[prost(message, repeated, tag = "1")]
     pub elements: ::prost::alloc::vec::Vec<CMsgSteamLearnDataSourceDescElement>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSteamLearnGetAccessTokensRequest {
     #[prost(uint32, optional, tag = "1")]
     pub appid: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnGetAccessTokensResponse {
-    #[prost(enumeration = "ESteamLearnGetAccessTokensResult", optional, tag = "1", default = "SteamlearnGetAccessTokensError")]
+    #[prost(
+        enumeration = "ESteamLearnGetAccessTokensResult",
+        optional,
+        tag = "1",
+        default = "SteamlearnGetAccessTokensError"
+    )]
     pub result: ::core::option::Option<i32>,
     #[prost(message, optional, tag = "2")]
     pub access_tokens: ::core::option::Option<CMsgSteamLearnAccessTokens>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnInferenceBackendResponse {
     #[prost(message, repeated, tag = "1")]
-    pub outputs: ::prost::alloc::vec::Vec<c_msg_steam_learn_inference_backend_response::Output>,
+    pub outputs: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_inference_backend_response::Output,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSteamLearnInferenceMetadataBackendRequest {
     #[prost(uint32, optional, tag = "1")]
     pub project_id: ::core::option::Option<u32>,
@@ -2326,7 +2775,8 @@ pub struct CMsgSteamLearnInferenceMetadataBackendRequest {
     pub fetch_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSteamLearnInferenceMetadataRequest {
     #[prost(string, optional, tag = "1")]
     pub access_token: ::core::option::Option<::prost::alloc::string::String>,
@@ -2338,29 +2788,52 @@ pub struct CMsgSteamLearnInferenceMetadataRequest {
     pub override_train_id: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnInferenceMetadataResponse {
-    #[prost(enumeration = "ESteamLearnInferenceMetadataResult", optional, tag = "1", default = "SteamlearnInferenceMetadataError")]
+    #[prost(
+        enumeration = "ESteamLearnInferenceMetadataResult",
+        optional,
+        tag = "1",
+        default = "SteamlearnInferenceMetadataError"
+    )]
     pub inference_metadata_result: ::core::option::Option<i32>,
     #[prost(message, optional, tag = "2")]
-    pub row_range: ::core::option::Option<c_msg_steam_learn_inference_metadata_response::RowRange>,
+    pub row_range: ::core::option::Option<
+        c_msg_steam_learn_inference_metadata_response::RowRange,
+    >,
     #[prost(message, repeated, tag = "3")]
-    pub ranges: ::prost::alloc::vec::Vec<c_msg_steam_learn_inference_metadata_response::Range>,
+    pub ranges: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_inference_metadata_response::Range,
+    >,
     #[prost(message, repeated, tag = "4")]
-    pub std_devs: ::prost::alloc::vec::Vec<c_msg_steam_learn_inference_metadata_response::StdDev>,
+    pub std_devs: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_inference_metadata_response::StdDev,
+    >,
     #[prost(message, repeated, tag = "5")]
-    pub compact_tables: ::prost::alloc::vec::Vec<c_msg_steam_learn_inference_metadata_response::CompactTable>,
+    pub compact_tables: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_inference_metadata_response::CompactTable,
+    >,
     #[prost(message, repeated, tag = "9")]
-    pub sequence_tables: ::prost::alloc::vec::Vec<c_msg_steam_learn_inference_metadata_response::SequenceTable>,
+    pub sequence_tables: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_inference_metadata_response::SequenceTable,
+    >,
     #[prost(message, repeated, tag = "6")]
-    pub kmeans: ::prost::alloc::vec::Vec<c_msg_steam_learn_inference_metadata_response::KMeans>,
+    pub kmeans: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_inference_metadata_response::KMeans,
+    >,
     #[prost(message, repeated, tag = "8")]
-    pub app_info: ::prost::alloc::vec::Vec<c_msg_steam_learn_inference_metadata_response::AppInfoEntry>,
+    pub app_info: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_inference_metadata_response::AppInfoEntry,
+    >,
     #[prost(message, optional, tag = "7")]
-    pub snapshot_histogram: ::core::option::Option<c_msg_steam_learn_inference_metadata_response::SnapshotHistogram>,
+    pub snapshot_histogram: ::core::option::Option<
+        c_msg_steam_learn_inference_metadata_response::SnapshotHistogram,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnInferenceRequest {
     #[prost(string, optional, tag = "1")]
     pub access_token: ::core::option::Option<::prost::alloc::string::String>,
@@ -2384,9 +2857,15 @@ pub struct CMsgSteamLearnInferenceRequest {
     pub debug_spew: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnInferenceResponse {
-    #[prost(enumeration = "ESteamLearnInferenceResult", optional, tag = "1", default = "SteamlearnInferenceError")]
+    #[prost(
+        enumeration = "ESteamLearnInferenceResult",
+        optional,
+        tag = "1",
+        default = "SteamlearnInferenceError"
+    )]
     pub inference_result: ::core::option::Option<i32>,
     #[prost(message, optional, tag = "2")]
     pub backend_response: ::core::option::Option<CMsgSteamLearnInferenceBackendResponse>,
@@ -2394,7 +2873,8 @@ pub struct CMsgSteamLearnInferenceResponse {
     pub keys: ::prost::alloc::vec::Vec<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnRegisterDataSourceRequest {
     #[prost(string, optional, tag = "1")]
     pub access_token: ::core::option::Option<::prost::alloc::string::String>,
@@ -2402,23 +2882,33 @@ pub struct CMsgSteamLearnRegisterDataSourceRequest {
     pub data_source: ::core::option::Option<CMsgSteamLearnDataSource>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnRegisterDataSourceResponse {
-    #[prost(enumeration = "ESteammLearnRegisterDataSourceResult", optional, tag = "1", default = "SteamlearnRegisterDataSourceResultError")]
+    #[prost(
+        enumeration = "ESteammLearnRegisterDataSourceResult",
+        optional,
+        tag = "1",
+        default = "SteamlearnRegisterDataSourceResultError"
+    )]
     pub result: ::core::option::Option<i32>,
     #[prost(message, optional, tag = "2")]
     pub data_source: ::core::option::Option<CMsgSteamLearnDataSource>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnServerInfo {
     #[prost(message, optional, tag = "4")]
     pub access_tokens: ::core::option::Option<CMsgSteamLearnAccessTokens>,
     #[prost(message, repeated, tag = "5")]
-    pub project_infos: ::prost::alloc::vec::Vec<c_msg_steam_learn_server_info::ProjectInfo>,
+    pub project_infos: ::prost::alloc::vec::Vec<
+        c_msg_steam_learn_server_info::ProjectInfo,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CMsgSteamLearnSnapshotProjectRequest {
     #[prost(string, optional, tag = "1")]
     pub access_token: ::core::option::Option<::prost::alloc::string::String>,
@@ -2434,19 +2924,27 @@ pub struct CMsgSteamLearnSnapshotProjectRequest {
     pub pending_data_limit_seconds: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CMsgSteamLearnSnapshotProjectResponse {
-    #[prost(enumeration = "ESteamLearnSnapshotProjectResult", optional, tag = "1", default = "SteamlearnSnapshotProjectError")]
+    #[prost(
+        enumeration = "ESteamLearnSnapshotProjectResult",
+        optional,
+        tag = "1",
+        default = "SteamlearnSnapshotProjectError"
+    )]
     pub snapshot_result: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CUserMessageEmpty {
     #[prost(uint32, optional, tag = "1")]
     pub empty: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CWorkshopGetContributorsRequest {
     #[prost(uint32, optional, tag = "1")]
     pub appid: ::core::option::Option<u32>,
@@ -2454,45 +2952,58 @@ pub struct CWorkshopGetContributorsRequest {
     pub gameitemid: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CWorkshopGetContributorsResponse {
     #[prost(fixed64, repeated, packed = "false", tag = "1")]
     pub contributors: ::prost::alloc::vec::Vec<u64>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CWorkshopPopulateItemDescriptionsRequest {
     #[prost(uint32, optional, tag = "1")]
     pub appid: ::core::option::Option<u32>,
     #[prost(message, repeated, tag = "2")]
-    pub languages: ::prost::alloc::vec::Vec<c_workshop_populate_item_descriptions_request::ItemDescriptionsLanguageBlock>,
+    pub languages: ::prost::alloc::vec::Vec<
+        c_workshop_populate_item_descriptions_request::ItemDescriptionsLanguageBlock,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CWorkshopSetItemPaymentRulesRequest {
     #[prost(uint32, optional, tag = "1")]
     pub appid: ::core::option::Option<u32>,
     #[prost(uint32, optional, tag = "2")]
     pub gameitemid: ::core::option::Option<u32>,
     #[prost(message, repeated, tag = "3")]
-    pub associated_workshop_files: ::prost::alloc::vec::Vec<c_workshop_set_item_payment_rules_request::WorkshopItemPaymentRule>,
+    pub associated_workshop_files: ::prost::alloc::vec::Vec<
+        c_workshop_set_item_payment_rules_request::WorkshopItemPaymentRule,
+    >,
     #[prost(message, repeated, tag = "4")]
-    pub partner_accounts: ::prost::alloc::vec::Vec<c_workshop_set_item_payment_rules_request::PartnerItemPaymentRule>,
+    pub partner_accounts: ::prost::alloc::vec::Vec<
+        c_workshop_set_item_payment_rules_request::PartnerItemPaymentRule,
+    >,
     #[prost(bool, optional, tag = "5")]
     pub validate_only: ::core::option::Option<bool>,
     #[prost(bool, optional, tag = "6")]
     pub make_workshop_files_subscribable: ::core::option::Option<bool>,
     #[prost(message, optional, tag = "7")]
-    pub associated_workshop_file_for_direct_payments: ::core::option::Option<c_workshop_set_item_payment_rules_request::WorkshopDirectPaymentRule>,
+    pub associated_workshop_file_for_direct_payments: ::core::option::Option<
+        c_workshop_set_item_payment_rules_request::WorkshopDirectPaymentRule,
+    >,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CWorkshopSetItemPaymentRulesResponse {
     #[prost(string, repeated, tag = "1")]
     pub validation_errors: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CameraAction {
     KEActionAddOp = 0,
@@ -2500,7 +3011,8 @@ pub enum CameraAction {
     KEActionClearOpsForContext = 2,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CameraOperation {
     KECameraOpMaintain = 2,
@@ -2510,7 +3022,8 @@ pub enum CameraOperation {
     KECameraOpLag = 6,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CameraParam {
     KEParamClearAllOps = 0,
@@ -2522,14 +3035,16 @@ pub enum CameraParam {
     KEParamHorizOffset = 6,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CameraParamMode {
     KEParamModeAllowInOneContext = 0,
     KEParamModeAllowInMultipleContexts = 1,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CgcMsgCompressedMsgToClient {
     #[prost(uint32, optional, tag = "1")]
     pub msg_id: ::core::option::Option<u32>,
@@ -2537,13 +3052,15 @@ pub struct CgcMsgCompressedMsgToClient {
     pub compressed_msg: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CgcMsgGetIpLocationResponse {
     #[prost(message, repeated, tag = "1")]
     pub infos: ::prost::alloc::vec::Vec<CipLocationInfo>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CgcStorePurchaseInitLineItem {
     #[prost(uint32, optional, tag = "1")]
     pub item_def_id: ::core::option::Option<u32>,
@@ -2559,7 +3076,8 @@ pub struct CgcStorePurchaseInitLineItem {
     pub price_index: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CgcSystemMsgGetAccountDetails {
     #[prost(fixed64, optional, tag = "1")]
     pub steamid: ::core::option::Option<u64>,
@@ -2567,7 +3085,8 @@ pub struct CgcSystemMsgGetAccountDetails {
     pub appid: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CgcSystemMsgGetAccountDetailsResponse {
     #[prost(uint32, optional, tag = "1", default = "2")]
     pub eresult_deprecated: ::core::option::Option<u32>,
@@ -2645,7 +3164,8 @@ pub struct CgcSystemMsgGetAccountDetailsResponse {
     pub is_banned_steam_china: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CgcToGcMsgMasterAck {
     #[prost(int32, optional, tag = "1", default = "-1")]
     pub dir_index: ::core::option::Option<i32>,
@@ -2657,19 +3177,22 @@ pub struct CgcToGcMsgMasterAck {
     pub directory: ::prost::alloc::vec::Vec<cgc_to_gc_msg_master_ack::Process>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CgcToGcMsgMasterAckResponse {
     #[prost(int32, optional, tag = "1", default = "2")]
     pub eresult: ::core::option::Option<i32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CgcToGcMsgMasterStartupComplete {
     #[prost(message, repeated, tag = "1")]
     pub gc_info: ::prost::alloc::vec::Vec<cgc_to_gc_msg_master_startup_complete::GcInfo>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CgcToGcMsgRouted {
     #[prost(uint32, optional, tag = "1")]
     pub msg_type: ::core::option::Option<u32>,
@@ -2679,7 +3202,8 @@ pub struct CgcToGcMsgRouted {
     pub net_message: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CgcToGcMsgRoutedReply {
     #[prost(uint32, optional, tag = "1")]
     pub msg_type: ::core::option::Option<u32>,
@@ -2687,7 +3211,8 @@ pub struct CgcToGcMsgRoutedReply {
     pub net_message: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ChatMsgPingMarkerInfo {
     KEPingMarkerInfoShowMarkerAndSound = 0,
@@ -2697,7 +3222,8 @@ pub enum ChatMsgPingMarkerInfo {
     KEPingMarkerInfoOnlyPlaySound = 4,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CipLocationInfo {
     #[prost(uint32, optional, tag = "1")]
     pub ip: ::core::option::Option<u32>,
@@ -2713,13 +3239,15 @@ pub struct CipLocationInfo {
     pub city: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CitadelEntityMessageIds {
     KEEntityMsgBreakablePropSpawnDebris = 500,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum CitadelUserMessageIds {
     KEUserMsgDamage = 300,
@@ -2780,7 +3308,8 @@ pub enum CitadelUserMessageIds {
     KEUserMsgEntityPortalled = 361,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CsoCitadelHideoutLobby {
     #[prost(uint64, optional, tag = "1")]
     pub hideout_lobby_id: ::core::option::Option<u64>,
@@ -2806,15 +3335,26 @@ pub struct CsoCitadelHideoutLobby {
     pub extra_messages: ::prost::alloc::vec::Vec<CExtraMsgBlock>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CsoCitadelLobby {
     #[prost(uint64, optional, tag = "1")]
     pub lobby_id: ::core::option::Option<u64>,
     #[prost(uint64, optional, tag = "2")]
     pub match_id: ::core::option::Option<u64>,
-    #[prost(enumeration = "ECitadelMatchMode", optional, tag = "3", default = "KECitadelMatchModeInvalid")]
+    #[prost(
+        enumeration = "ECitadelMatchMode",
+        optional,
+        tag = "3",
+        default = "KECitadelMatchModeInvalid"
+    )]
     pub match_mode: ::core::option::Option<i32>,
-    #[prost(enumeration = "ECitadelGameMode", optional, tag = "4", default = "KECitadelGameModeInvalid")]
+    #[prost(
+        enumeration = "ECitadelGameMode",
+        optional,
+        tag = "4",
+        default = "KECitadelGameModeInvalid"
+    )]
     pub game_mode: ::core::option::Option<i32>,
     #[prost(uint32, optional, tag = "5")]
     pub compatibility_version: ::core::option::Option<u32>,
@@ -2822,7 +3362,12 @@ pub struct CsoCitadelLobby {
     pub extra_messages: ::prost::alloc::vec::Vec<CExtraMsgBlock>,
     #[prost(fixed64, optional, tag = "7")]
     pub server_steam_id: ::core::option::Option<u64>,
-    #[prost(enumeration = "ELobbyServerState", optional, tag = "8", default = "KELobbyServerStateAssign")]
+    #[prost(
+        enumeration = "ELobbyServerState",
+        optional,
+        tag = "8",
+        default = "KELobbyServerStateAssign"
+    )]
     pub server_state: ::core::option::Option<i32>,
     #[prost(uint32, optional, tag = "9")]
     pub udp_connect_ip: ::core::option::Option<u32>,
@@ -2840,7 +3385,8 @@ pub struct CsoCitadelLobby {
     pub game_mode_version: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CsoCitadelParty {
     #[prost(uint64, optional, tag = "1")]
     pub party_id: ::core::option::Option<u64>,
@@ -2854,11 +3400,26 @@ pub struct CsoCitadelParty {
     pub left_members: ::prost::alloc::vec::Vec<cso_citadel_party::LeftMember>,
     #[prost(uint64, optional, tag = "6")]
     pub join_code: ::core::option::Option<u64>,
-    #[prost(enumeration = "ECitadelBotDifficulty", optional, tag = "7", default = "KECitadelBotDifficultyNone")]
+    #[prost(
+        enumeration = "ECitadelBotDifficulty",
+        optional,
+        tag = "7",
+        default = "KECitadelBotDifficultyNone"
+    )]
     pub bot_difficulty: ::core::option::Option<i32>,
-    #[prost(enumeration = "ECitadelMatchMode", optional, tag = "9", default = "KECitadelMatchModeInvalid")]
+    #[prost(
+        enumeration = "ECitadelMatchMode",
+        optional,
+        tag = "9",
+        default = "KECitadelMatchModeInvalid"
+    )]
     pub match_mode: ::core::option::Option<i32>,
-    #[prost(enumeration = "ECitadelGameMode", optional, tag = "10", default = "KECitadelGameModeInvalid")]
+    #[prost(
+        enumeration = "ECitadelGameMode",
+        optional,
+        tag = "10",
+        default = "KECitadelGameModeInvalid"
+    )]
     pub game_mode: ::core::option::Option<i32>,
     #[prost(uint32, optional, tag = "11")]
     pub match_making_start_time: ::core::option::Option<u32>,
@@ -2866,23 +3427,41 @@ pub struct CsoCitadelParty {
     pub server_search_key: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(bool, optional, tag = "13")]
     pub is_high_skill_range_party: ::core::option::Option<bool>,
-    #[prost(enumeration = "cso_citadel_party::EChatMode", optional, tag = "14", default = "KENone")]
+    #[prost(
+        enumeration = "cso_citadel_party::EChatMode",
+        optional,
+        tag = "14",
+        default = "KENone"
+    )]
     pub chat_mode: ::core::option::Option<i32>,
-    #[prost(enumeration = "ECitadelRegionMode", optional, tag = "15", default = "KECitadelRegionModeRow")]
+    #[prost(
+        enumeration = "ECitadelRegionMode",
+        optional,
+        tag = "15",
+        default = "KECitadelRegionModeRow"
+    )]
     pub region_mode: ::core::option::Option<i32>,
     #[prost(bool, optional, tag = "16")]
     pub is_private_lobby: ::core::option::Option<bool>,
     #[prost(message, optional, tag = "17")]
-    pub private_lobby_settings: ::core::option::Option<cso_citadel_party::PrivateLobbySettings>,
+    pub private_lobby_settings: ::core::option::Option<
+        cso_citadel_party::PrivateLobbySettings,
+    >,
     #[prost(bool, optional, tag = "18")]
     pub desires_laning_together: ::core::option::Option<bool>,
-    #[prost(enumeration = "ECitadelMmPreference", optional, tag = "19", default = "KECitadelMmPreferenceInvalid")]
+    #[prost(
+        enumeration = "ECitadelMmPreference",
+        optional,
+        tag = "19",
+        default = "KECitadelMmPreferenceInvalid"
+    )]
     pub mm_preference: ::core::option::Option<i32>,
     #[prost(string, optional, tag = "21")]
     pub hideout_search_key: ::core::option::Option<::prost::alloc::string::String>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CsoEconGameAccountClient {
     #[prost(uint32, optional, tag = "1", default = "0")]
     pub additional_backpack_slots: ::core::option::Option<u32>,
@@ -2902,7 +3481,8 @@ pub struct CsoEconGameAccountClient {
     pub made_first_purchase: ::core::option::Option<bool>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CsoEconItem {
     #[prost(uint64, optional, tag = "1")]
     pub id: ::core::option::Option<u64>,
@@ -2934,7 +3514,8 @@ pub struct CsoEconItem {
     pub equipped_state: ::prost::alloc::vec::Vec<CsoEconItemEquipped>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CsoEconItemAttribute {
     #[prost(uint32, optional, tag = "1", default = "65535")]
     pub def_index: ::core::option::Option<u32>,
@@ -2944,7 +3525,8 @@ pub struct CsoEconItemAttribute {
     pub value_bytes: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CsoEconItemEquipped {
     #[prost(uint32, optional, tag = "1")]
     pub new_class: ::core::option::Option<u32>,
@@ -2952,7 +3534,8 @@ pub struct CsoEconItemEquipped {
     pub new_slot: ::core::option::Option<u32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EBannedFeature {
     KEBannedFeatureInvalid = 0,
@@ -2961,7 +3544,8 @@ pub enum EBannedFeature {
     KEBannedFeatureReportingDisabled = 3,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelAccountStatMedal {
     KENone = 0,
@@ -2970,7 +3554,8 @@ pub enum ECitadelAccountStatMedal {
     KEGold = 3,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelBotDifficulty {
     KECitadelBotDifficultyNone = 0,
@@ -2981,7 +3566,8 @@ pub enum ECitadelBotDifficulty {
     KECitadelBotDifficultyGuided = 5,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelChatMessage {
     CitadelChatMessageUnpauseCountdown = 1,
@@ -2999,7 +3585,8 @@ pub enum ECitadelChatMessage {
     CitadelChatMessageCommsRestricted = 13,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelGameEvents {
     GeFireBullets = 450,
@@ -3014,7 +3601,8 @@ pub enum ECitadelGameEvents {
     GeRemoveBullet = 466,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelGameMode {
     KECitadelGameModeInvalid = 0,
@@ -3023,7 +3611,8 @@ pub enum ECitadelGameMode {
     KECitadelGameModeSandbox = 3,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelLeaderboardRegion {
     KECitadelLeaderboardRegionNone = 0,
@@ -3034,7 +3623,8 @@ pub enum ECitadelLeaderboardRegion {
     KECitadelLeaderboardRegionOceania = 5,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelLobbyTeam {
     KECitadelLobbyTeamTeam0 = 0,
@@ -3042,7 +3632,8 @@ pub enum ECitadelLobbyTeam {
     KECitadelLobbyTeamSpectator = 16,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelMatchMode {
     KECitadelMatchModeInvalid = 0,
@@ -3056,7 +3647,8 @@ pub enum ECitadelMatchMode {
     KECitadelMatchModeCalibration = 8,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelMmPreference {
     KECitadelMmPreferenceInvalid = 0,
@@ -3064,7 +3656,8 @@ pub enum ECitadelMmPreference {
     KECitadelMmPreferenceSerious = 2,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelObjective {
     KECitadelObjectiveTeam0Core = 0,
@@ -3102,7 +3695,8 @@ pub enum ECitadelObjective {
     KECitadelObjectiveNeutralMid = 32,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelRegionMode {
     KECitadelRegionModeRow = 0,
@@ -3113,7 +3707,8 @@ pub enum ECitadelRegionMode {
     KECitadelRegionModeOceania = 5,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECitadelTeamObjective {
     KECitadelTeamObjectiveCore = 0,
@@ -3134,7 +3729,8 @@ pub enum ECitadelTeamObjective {
     KECitadelTeamObjectiveBarrackBossLane4 = 15,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ECustomGameInstallStatus {
     KECustomGameInstallStatusUnknown = 0,
@@ -3149,7 +3745,8 @@ pub enum ECustomGameInstallStatus {
     KECustomGameInstallStatusFailedCanceled = 107,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EFeatureBanReason {
     KEFeatureBanReasonInvalid = 0,
@@ -3159,7 +3756,8 @@ pub enum EFeatureBanReason {
     KEFeatureBanReasonExcessivePlayerReports = 4,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ELobbyServerState {
     KELobbyServerStateAssign = 0,
@@ -3169,7 +3767,8 @@ pub enum ELobbyServerState {
     KELobbyServerStateAbandoned = 4,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EProtoDebugVisiblity {
     KEProtoDebugVisibilityAlways = 0,
@@ -3179,21 +3778,24 @@ pub enum EProtoDebugVisiblity {
     KEProtoDebugVisibilityNever = 100,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EProtoExecutionSite {
     KEProtoExecutionSiteUnknown = 0,
     KEProtoExecutionSiteSteamClient = 3,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESourceEngine {
     KEseSource1 = 0,
     KEseSource2 = 1,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESteamLearnCacheDataResult {
     SteamlearnCacheDataError = 0,
@@ -3206,7 +3808,8 @@ pub enum ESteamLearnCacheDataResult {
     SteamlearnCacheDataDisabled = 7,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESteamLearnDataType {
     SteamlearnDatatypeInvalid = 0,
@@ -3217,14 +3820,16 @@ pub enum ESteamLearnDataType {
     SteamlearnDatatypeObject = 5,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESteamLearnGetAccessTokensResult {
     SteamlearnGetAccessTokensError = 0,
     SteamlearnGetAccessTokensSuccess = 1,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESteamLearnInferenceMetadataResult {
     SteamlearnInferenceMetadataError = 0,
@@ -3237,7 +3842,8 @@ pub enum ESteamLearnInferenceMetadataResult {
     SteamlearnInferenceMetadataErrorNoFetchIdFound = 7,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESteamLearnInferenceResult {
     SteamlearnInferenceError = 0,
@@ -3257,7 +3863,8 @@ pub enum ESteamLearnInferenceResult {
     SteamlearnInferenceErrorInvalidNamedInference = 14,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESteamLearnSnapshotProjectResult {
     SteamlearnSnapshotProjectError = 0,
@@ -3275,7 +3882,8 @@ pub enum ESteamLearnSnapshotProjectResult {
     SteamlearnSnapshotProjectErrorInvalidPublishedVersion = 12,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ESteammLearnRegisterDataSourceResult {
     SteamlearnRegisterDataSourceResultError = 0,
@@ -3291,7 +3899,8 @@ pub enum ESteammLearnRegisterDataSourceResult {
     SteamlearnRegisterDataSourceResultDisabled = 10,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EgcBaseMsg {
     KEMsgGcInviteToParty = 4501,
@@ -3320,14 +3929,16 @@ pub enum EgcBaseMsg {
     KEMsgGcToServerSteamLearnUseHttp = 4526,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EgcCitadelCommonMessages {
     KEMsgAnyToGcReportAsserts = 7000,
     KEMsgAnyToGcReportAssertsResponse = 7001,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum EgcPlatform {
     KEGcPlatformNone = 0,
@@ -3338,7 +3949,8 @@ pub enum EgcPlatform {
     KEGcPlatformIOs = 5,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum GcConnectionStatus {
     HaveSession = 0,
@@ -3350,7 +3962,8 @@ pub enum GcConnectionStatus {
     SteamGoingDown = 6,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum GcProtoBufMsgSrc {
     Unspecified = 0,
@@ -3361,14 +3974,16 @@ pub enum GcProtoBufMsgSrc {
     SpoofedSteamId = 5,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ModifierEntryType {
     Active = 1,
     Removed = 2,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum ParticleSystemManagerMessage {
     ParticleSystemManagerEventCreate = 0,
@@ -3385,7 +4000,8 @@ pub enum ParticleSystemManagerMessage {
     ParticleSystemManagerEventUpdateShouldDraw = 11,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum PartnerAccountType {
     PartnerNone = 0,
@@ -3393,7 +4009,8 @@ pub enum PartnerAccountType {
     PartnerInvalid = 3,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PingCommonData {
     #[prost(uint32, optional, tag = "1")]
     pub ping_message_id: ::core::option::Option<u32>,
@@ -3411,7 +4028,8 @@ pub struct PingCommonData {
     pub cooldown_time: ::core::option::Option<f32>,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum PostProcessingGameStates {
     PostProcStateKilled = 0,
@@ -3422,7 +4040,18 @@ pub enum PostProcessingGameStates {
 }
 
 pub mod c_citadel_user_msg_abilities_changed {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum Change {
         EInvalid = -1,
@@ -3435,12 +4064,14 @@ pub mod c_citadel_user_msg_abilities_changed {
 }
 
 pub mod c_citadel_user_msg_camera_controller {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Maintain {
         #[prost(float, optional, tag = "1", default = "0")]
         pub duration: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Approach {
         #[prost(float, optional, tag = "1", default = "600")]
         pub speed: ::core::option::Option<f32>,
@@ -3457,7 +4088,8 @@ pub mod c_citadel_user_msg_camera_controller {
         #[prost(bool, optional, tag = "7")]
         pub chase_default: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Spring {
         #[prost(float, optional, tag = "1", default = "10")]
         pub spring_strength: ::core::option::Option<f32>,
@@ -3470,7 +4102,8 @@ pub mod c_citadel_user_msg_camera_controller {
         #[prost(message, optional, tag = "7")]
         pub target_vector: ::core::option::Option<super::CMsgVector>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Lerp {
         #[prost(float, optional, tag = "1")]
         pub start_float: ::core::option::Option<f32>,
@@ -3487,7 +4120,8 @@ pub mod c_citadel_user_msg_camera_controller {
         #[prost(float, optional, tag = "7", default = "1")]
         pub duration: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Lag {
         #[prost(float, optional, tag = "1")]
         pub min_duration: ::core::option::Option<f32>,
@@ -3498,12 +4132,15 @@ pub mod c_citadel_user_msg_camera_controller {
         #[prost(float, optional, tag = "4")]
         pub spring_strength: ::core::option::Option<f32>,
         #[prost(bool, optional, tag = "5", default = "true")]
-        pub increase_spring_strength_to_keep_target_on_screen: ::core::option::Option<bool>,
+        pub increase_spring_strength_to_keep_target_on_screen: ::core::option::Option<
+            bool,
+        >,
     }
 }
 
 pub mod c_citadel_user_msg_get_damage_stats_response {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct StatType {
         #[prost(uint32, repeated, tag = "1")]
         pub target_player_slot: ::prost::alloc::vec::Vec<u32>,
@@ -3513,7 +4150,8 @@ pub mod c_citadel_user_msg_get_damage_stats_response {
 }
 
 pub mod c_citadel_user_msg_gold_history {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct GoldRecord {
         #[prost(int32, optional, tag = "1")]
         pub currency_source: ::core::option::Option<i32>,
@@ -3522,7 +4160,8 @@ pub mod c_citadel_user_msg_gold_history {
         #[prost(int32, optional, tag = "3")]
         pub events: ::core::option::Option<i32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct MinuteRecord {
         #[prost(int32, optional, tag = "1")]
         pub match_minute: ::core::option::Option<i32>,
@@ -3532,7 +4171,8 @@ pub mod c_citadel_user_msg_gold_history {
 }
 
 pub mod c_citadel_user_msg_player_lifetime_stat_info {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Stat {
         #[prost(string, optional, tag = "1")]
         pub stat_name: ::core::option::Option<::prost::alloc::string::String>,
@@ -3552,7 +4192,8 @@ pub mod c_citadel_user_msg_player_lifetime_stat_info {
 }
 
 pub mod c_citadel_user_msg_recent_damage_summary {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct DamageRecord {
         #[prost(int32, optional, tag = "1")]
         pub damage: ::core::option::Option<i32>,
@@ -3579,7 +4220,8 @@ pub mod c_citadel_user_msg_recent_damage_summary {
         #[prost(float, optional, tag = "12")]
         pub crit_damage: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct ModifierRecord {
         #[prost(uint32, optional, tag = "1")]
         pub ability_id: ::core::option::Option<u32>,
@@ -3597,7 +4239,8 @@ pub mod c_citadel_user_msg_recent_damage_summary {
 }
 
 pub mod c_lobby_data_post_match_survey {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct PlayerSurvey {
         #[prost(uint32, optional, tag = "1")]
         pub account_id: ::core::option::Option<u32>,
@@ -3607,7 +4250,18 @@ pub mod c_lobby_data_post_match_survey {
 }
 
 pub mod c_msg_add_item_to_socket_response {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EAddGem {
         KAddGemSucceeded = 0,
@@ -3622,7 +4276,18 @@ pub mod c_msg_add_item_to_socket_response {
 }
 
 pub mod c_msg_add_socket_response {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EAddSocket {
         KAddSocketSucceeded = 0,
@@ -3633,7 +4298,8 @@ pub mod c_msg_add_socket_response {
 }
 
 pub mod c_msg_any_to_gc_report_asserts {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct TrackedAssert {
         #[prost(string, optional, tag = "1")]
         pub filename: ::core::option::Option<::prost::alloc::string::String>,
@@ -3655,7 +4321,8 @@ pub mod c_msg_any_to_gc_report_asserts {
 }
 
 pub mod c_msg_apply_remote_con_vars {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct ConVar {
         #[prost(string, optional, tag = "1")]
         pub name: ::core::option::Option<::prost::alloc::string::String>,
@@ -3665,13 +4332,19 @@ pub mod c_msg_apply_remote_con_vars {
         pub version_min: ::core::option::Option<u32>,
         #[prost(uint32, optional, tag = "4")]
         pub version_max: ::core::option::Option<u32>,
-        #[prost(enumeration = "super::EgcPlatform", optional, tag = "5", default = "KEGcPlatformNone")]
+        #[prost(
+            enumeration = "super::EgcPlatform",
+            optional,
+            tag = "5",
+            default = "KEGcPlatformNone"
+        )]
         pub platform: ::core::option::Option<i32>,
     }
 }
 
 pub mod c_msg_client_to_gc_aggregate_metrics {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct SingleMetric {
         #[prost(string, optional, tag = "1")]
         pub metric_name: ::core::option::Option<::prost::alloc::string::String>,
@@ -3681,7 +4354,8 @@ pub mod c_msg_client_to_gc_aggregate_metrics {
 }
 
 pub mod c_msg_client_to_gc_integrity_status {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Keyvalue {
         #[prost(uint32, optional, tag = "1")]
         pub id: ::core::option::Option<u32>,
@@ -3695,7 +4369,8 @@ pub mod c_msg_client_to_gc_integrity_status {
 }
 
 pub mod c_msg_client_welcome {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Location {
         #[prost(float, optional, tag = "1")]
         pub latitude: ::core::option::Option<f32>,
@@ -3707,7 +4382,18 @@ pub mod c_msg_client_welcome {
 }
 
 pub mod c_msg_extract_gems_response {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EExtractGems {
         KExtractGemsSucceeded = 0,
@@ -3719,7 +4405,8 @@ pub mod c_msg_extract_gems_response {
 }
 
 pub mod c_msg_fire_bullets {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct TracerAssignment {
         #[prost(uint64, optional, tag = "1")]
         pub tracer_resource_id: ::core::option::Option<u64>,
@@ -3729,7 +4416,8 @@ pub mod c_msg_fire_bullets {
 }
 
 pub mod c_msg_gc_to_gcso_cache_subscribe {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct CMsgHaveVersions {
         #[prost(uint32, optional, tag = "1")]
         pub service_id: ::core::option::Option<u32>,
@@ -3739,7 +4427,8 @@ pub mod c_msg_gc_to_gcso_cache_subscribe {
 }
 
 pub mod c_msg_gc_update_sub_gc_session_info {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct CMsgUpdate {
         #[prost(fixed64, optional, tag = "1")]
         pub steamid: ::core::option::Option<u64>,
@@ -3751,7 +4440,8 @@ pub mod c_msg_gc_update_sub_gc_session_info {
 }
 
 pub mod c_msg_hero_build {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct BuildModEntry {
         #[prost(uint32, optional, tag = "1")]
         pub ability_id: ::core::option::Option<u32>,
@@ -3764,7 +4454,8 @@ pub mod c_msg_hero_build {
         #[prost(uint32, optional, tag = "5")]
         pub imbue_target_ability_id: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct BuildModCategory {
         #[prost(message, repeated, tag = "1")]
         pub mods: ::prost::alloc::vec::Vec<BuildModEntry>,
@@ -3779,7 +4470,8 @@ pub mod c_msg_hero_build {
         #[prost(bool, optional, tag = "6")]
         pub optional: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct CurrencyChange {
         #[prost(uint32, optional, tag = "1")]
         pub ability_id: ::core::option::Option<u32>,
@@ -3790,12 +4482,14 @@ pub mod c_msg_hero_build {
         #[prost(string, optional, tag = "4")]
         pub annotation: ::core::option::Option<::prost::alloc::string::String>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct AbilityOrder {
         #[prost(message, repeated, tag = "1")]
         pub currency_changes: ::prost::alloc::vec::Vec<CurrencyChange>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DetailsV0 {
         #[prost(message, repeated, tag = "1")]
         pub mod_categories: ::prost::alloc::vec::Vec<BuildModCategory>,
@@ -3805,7 +4499,8 @@ pub mod c_msg_hero_build {
 }
 
 pub mod c_msg_hero_selection_match_info {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Hero {
         #[prost(uint32, optional, tag = "1")]
         pub hero_id: ::core::option::Option<u32>,
@@ -3815,7 +4510,8 @@ pub mod c_msg_hero_selection_match_info {
 }
 
 pub mod c_msg_inference_iterate_beam_search {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct CustomItemScalar {
         #[prost(uint32, optional, tag = "1")]
         pub item: ::core::option::Option<u32>,
@@ -3825,7 +4521,8 @@ pub mod c_msg_inference_iterate_beam_search {
 }
 
 pub mod c_msg_match_meta_data_contents {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Position {
         #[prost(float, optional, tag = "1")]
         pub x: ::core::option::Option<f32>,
@@ -3834,7 +4531,8 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(float, optional, tag = "3")]
         pub z: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct Deaths {
         #[prost(uint32, optional, tag = "1")]
         pub game_time_s: ::core::option::Option<u32>,
@@ -3849,7 +4547,8 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(uint32, optional, tag = "12")]
         pub death_duration_s: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Items {
         #[prost(uint32, optional, tag = "1")]
         pub game_time_s: ::core::option::Option<u32>,
@@ -3864,7 +4563,8 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(uint32, optional, tag = "6")]
         pub imbued_ability_id: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Ping {
         #[prost(uint32, optional, tag = "1")]
         pub ping_type: ::core::option::Option<u32>,
@@ -3873,7 +4573,8 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(uint32, optional, tag = "3")]
         pub game_time_s: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct GoldSource {
         #[prost(enumeration = "EGoldSource", optional, tag = "1", default = "KEPlayers")]
         pub source: ::core::option::Option<i32>,
@@ -3886,21 +4587,24 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(uint32, optional, tag = "5")]
         pub gold_orbs: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct CustomUserStatInfo {
         #[prost(string, optional, tag = "1")]
         pub name: ::core::option::Option<::prost::alloc::string::String>,
         #[prost(uint32, optional, tag = "2")]
         pub id: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct CustomUserStat {
         #[prost(uint32, optional, tag = "2")]
         pub value: ::core::option::Option<u32>,
         #[prost(uint32, optional, tag = "3")]
         pub id: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PlayerStats {
         #[prost(uint32, optional, tag = "1")]
         pub time_stamp_s: ::core::option::Option<u32>,
@@ -3997,14 +4701,16 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(uint32, optional, tag = "47")]
         pub self_damage: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct AbilityStat {
         #[prost(uint32, optional, tag = "1")]
         pub ability_id: ::core::option::Option<u32>,
         #[prost(uint32, optional, tag = "2")]
         pub ability_value: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct BookReward {
         #[prost(uint32, optional, tag = "1")]
         pub book_id: ::core::option::Option<u32>,
@@ -4013,7 +4719,8 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(uint32, optional, tag = "3")]
         pub starting_xp: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Players {
         #[prost(uint32, optional, tag = "1")]
         pub account_id: ::core::option::Option<u32>,
@@ -4025,7 +4732,12 @@ pub mod c_msg_match_meta_data_contents {
         pub items: ::prost::alloc::vec::Vec<Items>,
         #[prost(message, repeated, tag = "5")]
         pub stats: ::prost::alloc::vec::Vec<PlayerStats>,
-        #[prost(enumeration = "super::ECitadelLobbyTeam", optional, tag = "6", default = "KECitadelLobbyTeamTeam0")]
+        #[prost(
+            enumeration = "super::ECitadelLobbyTeam",
+            optional,
+            tag = "6",
+            default = "KECitadelLobbyTeamTeam0"
+        )]
         pub team: ::core::option::Option<i32>,
         #[prost(uint32, optional, tag = "8")]
         pub kills: ::core::option::Option<u32>,
@@ -4064,9 +4776,15 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(bool, optional, tag = "26")]
         pub rewards_eligible: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Objective {
-        #[prost(enumeration = "super::ECitadelObjective", optional, tag = "1", default = "KECitadelObjectiveTeam0Core")]
+        #[prost(
+            enumeration = "super::ECitadelObjective",
+            optional,
+            tag = "1",
+            default = "KECitadelObjectiveTeam0Core"
+        )]
         pub legacy_objective_id: ::core::option::Option<i32>,
         #[prost(uint32, optional, tag = "2")]
         pub destroyed_time_s: ::core::option::Option<u32>,
@@ -4080,21 +4798,43 @@ pub mod c_msg_match_meta_data_contents {
         pub player_damage_mitigated: ::core::option::Option<u32>,
         #[prost(uint32, optional, tag = "8")]
         pub first_damage_time_s: ::core::option::Option<u32>,
-        #[prost(enumeration = "super::ECitadelTeamObjective", optional, tag = "9", default = "KECitadelTeamObjectiveCore")]
+        #[prost(
+            enumeration = "super::ECitadelTeamObjective",
+            optional,
+            tag = "9",
+            default = "KECitadelTeamObjectiveCore"
+        )]
         pub team_objective_id: ::core::option::Option<i32>,
-        #[prost(enumeration = "super::ECitadelLobbyTeam", optional, tag = "10", default = "KECitadelLobbyTeamTeam0")]
+        #[prost(
+            enumeration = "super::ECitadelLobbyTeam",
+            optional,
+            tag = "10",
+            default = "KECitadelLobbyTeamTeam0"
+        )]
         pub team: ::core::option::Option<i32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct MidBoss {
-        #[prost(enumeration = "super::ECitadelLobbyTeam", optional, tag = "1", default = "KECitadelLobbyTeamTeam0")]
+        #[prost(
+            enumeration = "super::ECitadelLobbyTeam",
+            optional,
+            tag = "1",
+            default = "KECitadelLobbyTeamTeam0"
+        )]
         pub team_killed: ::core::option::Option<i32>,
-        #[prost(enumeration = "super::ECitadelLobbyTeam", optional, tag = "2", default = "KECitadelLobbyTeamTeam0")]
+        #[prost(
+            enumeration = "super::ECitadelLobbyTeam",
+            optional,
+            tag = "2",
+            default = "KECitadelLobbyTeamTeam0"
+        )]
         pub team_claimed: ::core::option::Option<i32>,
         #[prost(uint32, optional, tag = "3")]
         pub destroyed_time_s: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Pause {
         #[prost(uint32, optional, tag = "1")]
         pub game_time_s: ::core::option::Option<u32>,
@@ -4103,20 +4843,32 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(uint32, optional, tag = "3")]
         pub player_slot: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct WatchedDeathReplay {
         #[prost(uint32, optional, tag = "1")]
         pub game_time_s: ::core::option::Option<u32>,
         #[prost(uint32, optional, tag = "2")]
         pub player_slot: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct MatchInfo {
         #[prost(uint32, optional, tag = "1")]
         pub duration_s: ::core::option::Option<u32>,
-        #[prost(enumeration = "EMatchOutcome", optional, tag = "2", default = "KEOutcomeTeamWin")]
+        #[prost(
+            enumeration = "EMatchOutcome",
+            optional,
+            tag = "2",
+            default = "KEOutcomeTeamWin"
+        )]
         pub match_outcome: ::core::option::Option<i32>,
-        #[prost(enumeration = "super::ECitadelLobbyTeam", optional, tag = "3", default = "KECitadelLobbyTeamTeam0")]
+        #[prost(
+            enumeration = "super::ECitadelLobbyTeam",
+            optional,
+            tag = "3",
+            default = "KECitadelLobbyTeamTeam0"
+        )]
         pub winning_team: ::core::option::Option<i32>,
         #[prost(message, repeated, tag = "4")]
         pub players: ::prost::alloc::vec::Vec<Players>,
@@ -4126,9 +4878,19 @@ pub mod c_msg_match_meta_data_contents {
         pub match_id: ::core::option::Option<u64>,
         #[prost(uint32, optional, tag = "8")]
         pub legacy_objectives_mask: ::core::option::Option<u32>,
-        #[prost(enumeration = "super::ECitadelGameMode", optional, tag = "9", default = "KECitadelGameModeInvalid")]
+        #[prost(
+            enumeration = "super::ECitadelGameMode",
+            optional,
+            tag = "9",
+            default = "KECitadelGameModeInvalid"
+        )]
         pub game_mode: ::core::option::Option<i32>,
-        #[prost(enumeration = "super::ECitadelMatchMode", optional, tag = "10", default = "KECitadelMatchModeInvalid")]
+        #[prost(
+            enumeration = "super::ECitadelMatchMode",
+            optional,
+            tag = "10",
+            default = "KECitadelMatchModeInvalid"
+        )]
         pub match_mode: ::core::option::Option<i32>,
         #[prost(message, repeated, tag = "11")]
         pub objectives: ::prost::alloc::vec::Vec<Objective>,
@@ -4165,13 +4927,35 @@ pub mod c_msg_match_meta_data_contents {
         #[prost(bool, optional, tag = "27")]
         pub not_scored: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EMatchOutcome {
         KEOutcomeTeamWin = 0,
         KEOutcomeError = 1,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EGoldSource {
         KEPlayers = 1,
@@ -4190,35 +4974,50 @@ pub mod c_msg_match_meta_data_contents {
 }
 
 pub mod c_msg_match_player_damage_matrix {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct DamageToPlayer {
         #[prost(uint32, optional, tag = "1")]
         pub target_player_slot: ::core::option::Option<u32>,
         #[prost(uint32, repeated, tag = "2")]
         pub damage: ::prost::alloc::vec::Vec<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DamageSource {
         #[prost(message, repeated, tag = "2")]
         pub damage_to_players: ::prost::alloc::vec::Vec<DamageToPlayer>,
         #[prost(uint32, optional, tag = "4")]
         pub source_details_index: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DamageDealer {
         #[prost(uint32, optional, tag = "1")]
         pub dealer_player_slot: ::core::option::Option<u32>,
         #[prost(message, repeated, tag = "2")]
         pub damage_sources: ::prost::alloc::vec::Vec<DamageSource>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct SourceDetails {
         #[prost(enumeration = "EStatType", repeated, tag = "1")]
         pub stat_type: ::prost::alloc::vec::Vec<i32>,
         #[prost(string, repeated, tag = "2")]
         pub source_name: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EStatType {
         KETypeDamage = 0,
@@ -4231,7 +5030,8 @@ pub mod c_msg_match_player_damage_matrix {
 }
 
 pub mod c_msg_match_player_paths_data {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Path {
         #[prost(uint32, optional, tag = "1")]
         pub player_slot: ::core::option::Option<u32>,
@@ -4254,7 +5054,18 @@ pub mod c_msg_match_player_paths_data {
         #[prost(enumeration = "EMoveType", repeated, tag = "11")]
         pub move_type: ::prost::alloc::vec::Vec<i32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum ECombatType {
         KECombatTypeOut = 0,
@@ -4262,7 +5073,18 @@ pub mod c_msg_match_player_paths_data {
         KECombatTypeEnemyNpc = 2,
         KECombatTypeNeutral = 3,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EMoveType {
         KEMoveTypeNormal = 0,
@@ -4278,7 +5100,8 @@ pub mod c_msg_match_player_paths_data {
 }
 
 pub mod c_msg_particle_system_manager {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct CreateParticle {
         #[prost(fixed64, optional, tag = "1")]
         pub particle_name_index: ::core::option::Option<u64>,
@@ -4291,35 +5114,41 @@ pub mod c_msg_particle_system_manager {
         #[prost(message, optional, tag = "5")]
         pub angles: ::core::option::Option<super::CMsgQAngle>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct DestroyParticle {
         #[prost(bool, optional, tag = "1")]
         pub destroy_immediately: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct DestroyParticleInvolving {
         #[prost(bool, optional, tag = "1")]
         pub destroy_immediately: ::core::option::Option<bool>,
         #[prost(uint32, optional, tag = "3", default = "16777215")]
         pub entity_handle: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct ReleaseParticleIndex {}
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UpdateParticle {
         #[prost(int32, optional, tag = "1")]
         pub control_point: ::core::option::Option<i32>,
         #[prost(message, optional, tag = "2")]
         pub position: ::core::option::Option<super::CMsgVector>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UpdateParticleFwd {
         #[prost(int32, optional, tag = "1")]
         pub control_point: ::core::option::Option<i32>,
         #[prost(message, optional, tag = "2")]
         pub forward: ::core::option::Option<super::CMsgVector>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UpdateParticleOrient {
         #[prost(int32, optional, tag = "1")]
         pub control_point: ::core::option::Option<i32>,
@@ -4330,14 +5159,16 @@ pub mod c_msg_particle_system_manager {
         #[prost(message, optional, tag = "4")]
         pub up: ::core::option::Option<super::CMsgVector>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UpdateParticleFallback {
         #[prost(int32, optional, tag = "1")]
         pub control_point: ::core::option::Option<i32>,
         #[prost(message, optional, tag = "2")]
         pub position: ::core::option::Option<super::CMsgVector>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UpdateParticleEnt {
         #[prost(int32, optional, tag = "1")]
         pub control_point: ::core::option::Option<i32>,
@@ -4350,19 +5181,22 @@ pub mod c_msg_particle_system_manager {
         #[prost(message, optional, tag = "5")]
         pub fallback_position: ::core::option::Option<super::CMsgVector>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct UpdateParticleOffset {
         #[prost(int32, optional, tag = "1")]
         pub control_point: ::core::option::Option<i32>,
         #[prost(message, optional, tag = "2")]
         pub origin_offset: ::core::option::Option<super::CMsgVector>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct UpdateParticleFrozen {
         #[prost(bool, optional, tag = "1")]
         pub set_frozen: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct UpdateParticleShouldDraw {
         #[prost(bool, optional, tag = "1")]
         pub should_draw: ::core::option::Option<bool>,
@@ -4370,7 +5204,18 @@ pub mod c_msg_particle_system_manager {
 }
 
 pub mod c_msg_reset_strange_gem_count_response {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EResetGem {
         KResetGemSucceeded = 0,
@@ -4382,7 +5227,8 @@ pub mod c_msg_reset_strange_gem_count_response {
 }
 
 pub mod c_msg_sdo_assert {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Request {
         #[prost(uint64, repeated, packed = "false", tag = "1")]
         pub key: ::prost::alloc::vec::Vec<u64>,
@@ -4392,7 +5238,8 @@ pub mod c_msg_sdo_assert {
 }
 
 pub mod c_msg_serialized_so_cache {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct TypeCache {
         #[prost(uint32, optional, tag = "1")]
         pub r#type: ::core::option::Option<u32>,
@@ -4401,7 +5248,8 @@ pub mod c_msg_serialized_so_cache {
         #[prost(uint32, optional, tag = "3")]
         pub service_id: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Cache {
         #[prost(uint32, optional, tag = "1")]
         pub r#type: ::core::option::Option<u32>,
@@ -4413,7 +5261,8 @@ pub mod c_msg_serialized_so_cache {
         pub type_caches: ::prost::alloc::vec::Vec<TypeCache>,
     }
     pub mod cache {
-        #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct Version {
             #[prost(uint32, optional, tag = "1")]
             pub service: ::core::option::Option<u32>,
@@ -4424,7 +5273,8 @@ pub mod c_msg_serialized_so_cache {
 }
 
 pub mod c_msg_set_item_positions {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct ItemPosition {
         #[prost(uint64, optional, tag = "1")]
         pub item_id: ::core::option::Option<u64>,
@@ -4434,7 +5284,8 @@ pub mod c_msg_set_item_positions {
 }
 
 pub mod c_msg_so_cache_subscribed {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct SubscribedType {
         #[prost(int32, optional, tag = "1")]
         pub type_id: ::core::option::Option<i32>,
@@ -4444,7 +5295,8 @@ pub mod c_msg_so_cache_subscribed {
 }
 
 pub mod c_msg_so_multiple_objects {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct SingleObject {
         #[prost(int32, optional, tag = "1")]
         pub type_id: ::core::option::Option<i32>,
@@ -4454,21 +5306,24 @@ pub mod c_msg_so_multiple_objects {
 }
 
 pub mod c_msg_steam_learn_access_tokens {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct CacheDataAccessToken {
         #[prost(uint32, optional, tag = "1")]
         pub data_source_id: ::core::option::Option<u32>,
         #[prost(string, optional, tag = "2")]
         pub access_token: ::core::option::Option<::prost::alloc::string::String>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct SnapshotProjectAccessToken {
         #[prost(uint32, optional, tag = "1")]
         pub project_id: ::core::option::Option<u32>,
         #[prost(string, optional, tag = "2")]
         pub access_token: ::core::option::Option<::prost::alloc::string::String>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct InferenceAccessToken {
         #[prost(uint32, optional, tag = "1")]
         pub project_id: ::core::option::Option<u32>,
@@ -4478,27 +5333,32 @@ pub mod c_msg_steam_learn_access_tokens {
 }
 
 pub mod c_msg_steam_learn_inference_backend_response {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Sequence {
         #[prost(float, repeated, packed = "false", tag = "1")]
         pub value: ::prost::alloc::vec::Vec<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct RegressionOutput {
         #[prost(float, optional, tag = "2")]
         pub value: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct NamedInferenceOutput {
         #[prost(float, repeated, packed = "false", tag = "3")]
         pub value: ::prost::alloc::vec::Vec<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct BinaryCrossEntropyOutput {
         #[prost(float, optional, tag = "1")]
         pub value: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct MutliBinaryCrossEntropyOutput {
         #[prost(float, repeated, packed = "false", tag = "1")]
         pub weight: ::prost::alloc::vec::Vec<f32>,
@@ -4507,7 +5367,8 @@ pub mod c_msg_steam_learn_inference_backend_response {
         #[prost(message, repeated, tag = "3")]
         pub value_sequence: ::prost::alloc::vec::Vec<Sequence>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct CategoricalCrossEntropyOutput {
         #[prost(float, repeated, packed = "false", tag = "1")]
         pub weight: ::prost::alloc::vec::Vec<f32>,
@@ -4516,13 +5377,15 @@ pub mod c_msg_steam_learn_inference_backend_response {
         #[prost(message, repeated, tag = "3")]
         pub value_sequence: ::prost::alloc::vec::Vec<Sequence>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Output {
         #[prost(oneof = "output::ResponseType", tags = "1, 2, 3, 4, 5")]
         pub response_type: ::core::option::Option<output::ResponseType>,
     }
     pub mod output {
-        #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Oneof)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum ResponseType {
             #[prost(message, tag = "1")]
             BinaryCrossentropy(super::BinaryCrossEntropyOutput),
@@ -4539,14 +5402,16 @@ pub mod c_msg_steam_learn_inference_backend_response {
 }
 
 pub mod c_msg_steam_learn_inference_metadata_response {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct RowRange {
         #[prost(uint64, optional, tag = "1")]
         pub min_row: ::core::option::Option<u64>,
         #[prost(uint64, optional, tag = "2")]
         pub max_row: ::core::option::Option<u64>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Range {
         #[prost(string, optional, tag = "1")]
         pub data_element_path: ::core::option::Option<::prost::alloc::string::String>,
@@ -4555,7 +5420,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
         #[prost(float, optional, tag = "3")]
         pub max_value: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct StdDev {
         #[prost(string, optional, tag = "1")]
         pub data_element_path: ::core::option::Option<::prost::alloc::string::String>,
@@ -4564,7 +5430,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
         #[prost(float, optional, tag = "3")]
         pub std_dev: ::core::option::Option<f32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct CompactTable {
         #[prost(string, optional, tag = "1")]
         pub name: ::core::option::Option<::prost::alloc::string::String>,
@@ -4574,7 +5441,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
         pub map_mappings: ::prost::alloc::vec::Vec<compact_table::MapMappingsEntry>,
     }
     pub mod compact_table {
-        #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct Entry {
             #[prost(uint32, optional, tag = "1")]
             pub value: ::core::option::Option<u32>,
@@ -4583,14 +5451,16 @@ pub mod c_msg_steam_learn_inference_metadata_response {
             #[prost(uint64, optional, tag = "3")]
             pub count: ::core::option::Option<u64>,
         }
-        #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct MapValuesEntry {
             #[prost(uint32, optional, tag = "1")]
             pub key: ::core::option::Option<u32>,
             #[prost(message, optional, tag = "2")]
             pub value: ::core::option::Option<Entry>,
         }
-        #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct MapMappingsEntry {
             #[prost(uint32, optional, tag = "1")]
             pub key: ::core::option::Option<u32>,
@@ -4598,7 +5468,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
             pub value: ::core::option::Option<Entry>,
         }
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SequenceTable {
         #[prost(string, optional, tag = "1")]
         pub name: ::core::option::Option<::prost::alloc::string::String>,
@@ -4610,7 +5481,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
         pub total_count: ::core::option::Option<u64>,
     }
     pub mod sequence_table {
-        #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct Entry {
             #[prost(uint32, repeated, packed = "false", tag = "1")]
             pub values: ::prost::alloc::vec::Vec<u32>,
@@ -4619,14 +5491,16 @@ pub mod c_msg_steam_learn_inference_metadata_response {
             #[prost(uint32, optional, tag = "3")]
             pub count: ::core::option::Option<u32>,
         }
-        #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct MapValuesEntry {
             #[prost(uint32, optional, tag = "1")]
             pub key: ::core::option::Option<u32>,
             #[prost(message, optional, tag = "2")]
             pub value: ::core::option::Option<Entry>,
         }
-        #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
         pub struct MapMappingsEntry {
             #[prost(string, optional, tag = "1")]
             pub key: ::core::option::Option<::prost::alloc::string::String>,
@@ -4634,7 +5508,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
             pub value: ::core::option::Option<Entry>,
         }
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct KMeans {
         #[prost(string, optional, tag = "1")]
         pub name: ::core::option::Option<::prost::alloc::string::String>,
@@ -4642,7 +5517,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
         pub clusters: ::prost::alloc::vec::Vec<k_means::Cluster>,
     }
     pub mod k_means {
-        #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, ::prost::Message)]
+        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(Clone, Copy, PartialEq, ::prost::Message)]
         pub struct Cluster {
             #[prost(float, optional, tag = "1")]
             pub x: ::core::option::Option<f32>,
@@ -4658,7 +5534,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
             pub radius_25pct: ::core::option::Option<f32>,
         }
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct SnapshotHistogram {
         #[prost(float, optional, tag = "1")]
         pub min_value: ::core::option::Option<f32>,
@@ -4669,7 +5546,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
         #[prost(uint32, repeated, packed = "false", tag = "4")]
         pub bucket_counts: ::prost::alloc::vec::Vec<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct AppInfo {
         #[prost(string, optional, tag = "1")]
         pub country_allow: ::core::option::Option<::prost::alloc::string::String>,
@@ -4686,7 +5564,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
         #[prost(bool, optional, tag = "7")]
         pub adult_sex: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct AppInfoEntry {
         #[prost(uint32, optional, tag = "1")]
         pub key: ::core::option::Option<u32>,
@@ -4696,7 +5575,8 @@ pub mod c_msg_steam_learn_inference_metadata_response {
 }
 
 pub mod c_msg_steam_learn_server_info {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct ProjectInfo {
         #[prost(uint32, optional, tag = "1")]
         pub project_id: ::core::option::Option<u32>,
@@ -4712,14 +5592,16 @@ pub mod c_msg_steam_learn_server_info {
 }
 
 pub mod c_workshop_populate_item_descriptions_request {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct SingleItemDescription {
         #[prost(uint32, optional, tag = "1")]
         pub gameitemid: ::core::option::Option<u32>,
         #[prost(string, optional, tag = "2")]
         pub item_description: ::core::option::Option<::prost::alloc::string::String>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct ItemDescriptionsLanguageBlock {
         #[prost(string, optional, tag = "1")]
         pub language: ::core::option::Option<::prost::alloc::string::String>,
@@ -4729,7 +5611,8 @@ pub mod c_workshop_populate_item_descriptions_request {
 }
 
 pub mod c_workshop_set_item_payment_rules_request {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct WorkshopItemPaymentRule {
         #[prost(uint64, optional, tag = "1")]
         pub workshop_file_id: ::core::option::Option<u64>,
@@ -4740,14 +5623,16 @@ pub mod c_workshop_set_item_payment_rules_request {
         #[prost(uint32, optional, tag = "4", default = "1")]
         pub rule_type: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct WorkshopDirectPaymentRule {
         #[prost(uint64, optional, tag = "1")]
         pub workshop_file_id: ::core::option::Option<u64>,
         #[prost(string, optional, tag = "2")]
         pub rule_description: ::core::option::Option<::prost::alloc::string::String>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PartnerItemPaymentRule {
         #[prost(uint32, optional, tag = "1")]
         pub account_id: ::core::option::Option<u32>,
@@ -4759,7 +5644,8 @@ pub mod c_workshop_set_item_payment_rules_request {
 }
 
 pub mod cgc_to_gc_msg_master_ack {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Process {
         #[prost(int32, optional, tag = "1", default = "-1")]
         pub dir_index: ::core::option::Option<i32>,
@@ -4769,7 +5655,8 @@ pub mod cgc_to_gc_msg_master_ack {
 }
 
 pub mod cgc_to_gc_msg_master_startup_complete {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct GcInfo {
         #[prost(int32, optional, tag = "1", default = "-1")]
         pub dir_index: ::core::option::Option<i32>,
@@ -4779,7 +5666,8 @@ pub mod cgc_to_gc_msg_master_startup_complete {
 }
 
 pub mod cso_citadel_hideout_lobby {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Member {
         #[prost(uint32, optional, tag = "1")]
         pub account_id: ::core::option::Option<u32>,
@@ -4789,19 +5677,22 @@ pub mod cso_citadel_hideout_lobby {
 }
 
 pub mod cso_citadel_party {
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct PrivateLobbySlot {
         #[prost(uint32, optional, tag = "1")]
         pub slot_id: ::core::option::Option<u32>,
         #[prost(uint32, optional, tag = "2")]
         pub player_account_id: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct ServerRegion {
         #[prost(uint32, optional, tag = "1")]
         pub region_id: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PrivateLobbySettings {
         #[prost(uint32, optional, tag = "1")]
         pub min_roster_size: ::core::option::Option<u32>,
@@ -4822,7 +5713,8 @@ pub mod cso_citadel_party {
         #[prost(bool, optional, tag = "10")]
         pub experimental_heroes_enabled: ::core::option::Option<bool>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct Member {
         #[prost(uint32, optional, tag = "1")]
         pub account_id: ::core::option::Option<u32>,
@@ -4832,11 +5724,21 @@ pub mod cso_citadel_party {
         pub rights_flags: ::core::option::Option<u32>,
         #[prost(bool, optional, tag = "4")]
         pub is_ready: ::core::option::Option<bool>,
-        #[prost(enumeration = "EPlayerType", optional, tag = "5", default = "KEPlayerTypePlayer")]
+        #[prost(
+            enumeration = "EPlayerType",
+            optional,
+            tag = "5",
+            default = "KEPlayerTypePlayer"
+        )]
         pub player_type: ::core::option::Option<i32>,
         #[prost(uint32, optional, tag = "6")]
         pub compatibility_version: ::core::option::Option<u32>,
-        #[prost(enumeration = "super::EgcPlatform", optional, tag = "7", default = "KEGcPlatformNone")]
+        #[prost(
+            enumeration = "super::EgcPlatform",
+            optional,
+            tag = "7",
+            default = "KEGcPlatformNone"
+        )]
         pub platform: ::core::option::Option<i32>,
         #[prost(uint32, optional, tag = "8")]
         pub team: ::core::option::Option<u32>,
@@ -4851,16 +5753,23 @@ pub mod cso_citadel_party {
         #[prost(uint32, optional, tag = "13")]
         pub low_priority_games_remaining: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct LeftMember {
         #[prost(uint32, optional, tag = "1")]
         pub account_id: ::core::option::Option<u32>,
         #[prost(uint32, optional, tag = "2")]
         pub rights_flags: ::core::option::Option<u32>,
-        #[prost(enumeration = "EPlayerType", optional, tag = "3", default = "KEPlayerTypePlayer")]
+        #[prost(
+            enumeration = "EPlayerType",
+            optional,
+            tag = "3",
+            default = "KEPlayerTypePlayer"
+        )]
         pub player_type: ::core::option::Option<i32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
     pub struct Invite {
         #[prost(uint32, optional, tag = "1")]
         pub account_id: ::core::option::Option<u32>,
@@ -4869,19 +5778,52 @@ pub mod cso_citadel_party {
         #[prost(uint32, optional, tag = "3")]
         pub invited_by: ::core::option::Option<u32>,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EMemberRights {
         KEMemberRightsAdmin = 1,
         KEMemberRightsCreator = 2,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EPlayerType {
         KEPlayerTypePlayer = 0,
         KEPlayerTypeSpectator = 1,
     }
-    #[derive(serde::Serialize, serde::Deserialize, Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[derive(serde::Serialize, serde::Deserialize)]
+    #[derive(
+        Clone,
+        Copy,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        PartialOrd,
+        Ord,
+        ::prost::Enumeration
+    )]
     #[repr(i32)]
     pub enum EChatMode {
         KENone = 0,

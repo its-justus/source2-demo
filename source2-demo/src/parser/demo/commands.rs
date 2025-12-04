@@ -7,6 +7,9 @@ use crate::reader::*;
 use crate::HashMap;
 use crate::PacketStats;
 use crate::{Parser, StringTableRow};
+use std::fmt::Display;
+use std::fs::File;
+use std::io::Write;
 use std::rc::Rc;
 
 pub trait DemoCommands {
@@ -145,27 +148,21 @@ impl DemoCommands for Parser<'_> {
         let mut packet_reader = Reader::new(packet.data());
         self.context.packet_stats = PacketStats::default();
         self.context.packet_stats.add_packet();
+        let mut messages: Vec<DecodedMessage> = Vec::new();
         while packet_reader.bytes_remaining() != 0 {
             let msg_type = packet_reader.read_ubit_var() as i32;
             let size = packet_reader.read_var_u32();
             let msg_buf = packet_reader.read_bytes(size);
 
-            #[cfg(feature = "dota")]
-            if let Ok(msg) = EDotaUserMessages::try_from(msg_type) {
-                self.on_dota_user_message(msg, &msg_buf)?;
-                continue;
-            }
-
+            // start: my stuff
             self.context.packet_stats.add_message(msg_type as u32);
-            let m_type = MessageType::from(msg_type);
+            let m_type = RawMessageType::from(msg_type);
 
-            match m_type {
-                MessageType::Net(net_messages) => match net_messages {
-                    NetMessages::NetTick => dump_tick_message(&msg_buf),
-                    _ => (),
-                },
-                MessageType::Unknown => (),
+            if m_type != RawMessageType::Unknown {
+                messages.push(DecodedMessage::from((m_type, msg_buf.as_slice())));
             }
+
+            // end: my stuff
 
             #[cfg(feature = "deadlock")]
             if let Ok(msg) = CitadelUserMessageIds::try_from(msg_type) {
@@ -186,7 +183,9 @@ impl DemoCommands for Parser<'_> {
                 self.on_net_message(msg, &msg_buf)?;
             }
         }
-        print!("\n\n{}", &self.context.packet_stats);
+        println!("\n\n{}", &self.context.packet_stats);
+        println!("message count: {}", messages.len());
+        dump_packet_to_json(messages);
         Ok(())
     }
 
@@ -232,20 +231,101 @@ impl DemoCommands for Parser<'_> {
     }
 }
 
-enum MessageType {
+#[derive(PartialEq)]
+enum RawMessageType {
+    Base(EBaseGameEvents),
+    Game(CitadelUserMessageIds),
     Net(NetMessages),
+    Service(SvcMessages),
     Unknown,
 }
 
-impl From<i32> for MessageType {
+impl From<i32> for RawMessageType {
     fn from(value: i32) -> Self {
         match value {
-            4 => MessageType::Net(NetMessages::NetTick),
-            _ => MessageType::Unknown,
+            4 => RawMessageType::Net(NetMessages::NetTick),
+            210 => RawMessageType::Base(EBaseGameEvents::GeSosSetSoundEventParams),
+            55 => RawMessageType::Service(SvcMessages::SvcPacketEntities),
+            76 => RawMessageType::Service(SvcMessages::SvcUserCmds),
+            _ => RawMessageType::Unknown,
         }
     }
 }
 
-fn dump_tick_message(msg: &Vec<u8>) {
-    println!("yay, we got a tick!");
+impl Display for RawMessageType {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            RawMessageType::Base(ebase_game_events) => match ebase_game_events {
+                EBaseGameEvents::GeSosSetSoundEventParams => {
+                    write!(f, "EBaseGameEvents::GeSosSetSoundEventParams")
+                }
+                _ => write!(f, "EBaseGameEvents::UnknownMessage"),
+            },
+            RawMessageType::Game(ecitadel_game_events) => match ecitadel_game_events {
+                _ => write!(f, "ECitadelGameEvents::UnknownMessage"),
+            },
+            RawMessageType::Net(net_messages) => match net_messages {
+                NetMessages::NetTick => write!(f, "NetMessages::NetTick"),
+                _ => write!(f, "NetMessages::UnknownMessage"),
+            },
+            RawMessageType::Unknown => write!(f, "UnknownMessageType"),
+            RawMessageType::Service(svc_messages) => match svc_messages {
+                SvcMessages::SvcPacketEntities => write!(f, "SvcMessages::SvcPacketEntities"),
+                SvcMessages::SvcUserCmds => write!(f, "SvcMessages::SvcUserCmds"),
+                _ => write!(f, "SvcMessages::UnknownMessage"),
+            },
+        }
+    }
+}
+
+fn dump_packet_to_json(messages: Vec<DecodedMessage>) {
+    let json = serde_json::to_string(&messages).unwrap();
+    let mut outfile = File::options()
+        .write(true)
+        .create(true)
+        .open(format!("../replays/match-details/packet.json"))
+        .expect("unable to create file");
+
+    outfile
+        .write(json.as_bytes())
+        .expect("unable to write file");
+}
+
+#[derive(serde::Serialize)]
+enum DecodedMessage {
+    NetTick(CNetMsgTick),
+    GeSosSetSoundEventParams(CMsgSosSetSoundEventParams),
+    SvcPacketEntities(CSvcMsgPacketEntities),
+    SvcUserCmds(CSvcMsgUserCommands),
+}
+
+impl From<(RawMessageType, &[u8])> for DecodedMessage {
+    fn from(value: (RawMessageType, &[u8])) -> Self {
+        let msg = value.1;
+        match value.0 {
+            RawMessageType::Net(net_messages) => match net_messages {
+                NetMessages::NetTick => DecodedMessage::NetTick(CNetMsgTick::decode(msg).unwrap()),
+                _ => panic!("unknown net message"),
+            },
+            RawMessageType::Game(citadel_user_messages) => todo!(),
+            RawMessageType::Base(ebase_game_events) => match ebase_game_events {
+                EBaseGameEvents::GeSosSetSoundEventParams => {
+                    DecodedMessage::GeSosSetSoundEventParams(
+                        CMsgSosSetSoundEventParams::decode(msg).unwrap(),
+                    )
+                }
+                _ => panic!("unknown base game message"),
+            },
+            RawMessageType::Unknown => todo!(),
+            RawMessageType::Service(svc_messages) => match svc_messages {
+                SvcMessages::SvcPacketEntities => {
+                    DecodedMessage::SvcPacketEntities(CSvcMsgPacketEntities::decode(msg).unwrap())
+                }
+                SvcMessages::SvcUserCmds => {
+                    DecodedMessage::SvcUserCmds(CSvcMsgUserCommands::decode(msg).unwrap())
+                }
+                _ => panic!("unknown service message"),
+            },
+        }
+    }
 }

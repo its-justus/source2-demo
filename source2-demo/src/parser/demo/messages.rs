@@ -1,11 +1,8 @@
 use crate::error::ParserError;
 use crate::parser::demo::svc::SvcMsg;
 use crate::proto::*;
-use crate::{Interests, Parser};
 use crate::{try_observers, GameEvent, GameEventList};
-
-#[cfg(feature = "dota")]
-use crate::event::CombatLogEntry;
+use crate::{Interests, Parser};
 
 pub trait DemoMessages {
     fn on_base_user_message(
@@ -29,13 +26,6 @@ pub trait DemoMessages {
 
     fn on_stop(&mut self) -> Result<(), ParserError>;
 
-    #[cfg(feature = "dota")]
-    fn on_dota_user_message(
-        &mut self,
-        msg_type: EDotaUserMessages,
-        msg: &[u8],
-    ) -> Result<(), ParserError>;
-
     #[cfg(feature = "deadlock")]
     fn on_citadel_game_event(
         &mut self,
@@ -57,7 +47,11 @@ impl DemoMessages for Parser<'_> {
         msg_type: EBaseUserMessages,
         msg: &[u8],
     ) -> Result<(), ParserError> {
-        try_observers!(self, BASE_UM, on_base_user_message(&self.context, msg_type, msg))?;
+        try_observers!(
+            self,
+            BASE_UM,
+            on_base_user_message(&self.context, msg_type, msg)
+        )?;
         Ok(())
     }
 
@@ -76,7 +70,11 @@ impl DemoMessages for Parser<'_> {
                 try_observers!(self, BASE_GE, on_game_event(&self.context, &ge))?;
             }
 
-            try_observers!(self, BASE_GE, on_base_game_event(&self.context, msg_type, msg))?;
+            try_observers!(
+                self,
+                BASE_GE,
+                on_base_game_event(&self.context, msg_type, msg)
+            )?;
         }
         Ok(())
     }
@@ -139,16 +137,6 @@ impl DemoMessages for Parser<'_> {
     }
 
     fn on_tick_end(&mut self) -> Result<(), ParserError> {
-        #[cfg(feature = "dota")]
-        if self.anyone_interested(Interests::ENABLE_STRINGTAB | Interests::COMBAT_LOG) {
-            if let Ok(names) = self.context.string_tables.get_by_name("CombatLogNames") {
-                while let Some(log) = self.combat_log.pop_front() {
-                    let entry = CombatLogEntry { names, log };
-                    try_observers!(self, COMBAT_LOG, on_combat_log(&self.context, &entry))?;
-                }
-            }
-        }
-
         try_observers!(self, TICK_END, on_tick_end(&self.context))?;
         Ok(())
     }
@@ -158,30 +146,17 @@ impl DemoMessages for Parser<'_> {
         Ok(())
     }
 
-    #[cfg(feature = "dota")]
-    fn on_dota_user_message(
-        &mut self,
-        msg_type: EDotaUserMessages,
-        msg: &[u8],
-    ) -> Result<(), ParserError> {
-        if self.anyone_interested(Interests::COMBAT_LOG)
-            && msg_type == EDotaUserMessages::DotaUmCombatLogDataHltv
-        {
-            let entry = CMsgDotaCombatLogEntry::decode(msg)?;
-            self.combat_log.push_back(entry);
-        }
-
-        try_observers!(self, DOTA_UM, on_dota_user_message(&self.context, msg_type, msg))?;
-        Ok(())
-    }
-
     #[cfg(feature = "deadlock")]
     fn on_citadel_game_event(
         &mut self,
         msg_type: ECitadelGameEvents,
         msg: &[u8],
     ) -> Result<(), ParserError> {
-        try_observers!(self, CITA_GE, on_citadel_game_event(&self.context, msg_type, msg))?;
+        try_observers!(
+            self,
+            CITA_GE,
+            on_citadel_game_event(&self.context, msg_type, msg)
+        )?;
         Ok(())
     }
 
@@ -191,7 +166,11 @@ impl DemoMessages for Parser<'_> {
         msg_type: CitadelUserMessageIds,
         msg: &[u8],
     ) -> Result<(), ParserError> {
-        try_observers!(self, CITA_UM, on_citadel_user_message(&self.context, msg_type, msg))?;
+        try_observers!(
+            self,
+            CITA_UM,
+            on_citadel_user_message(&self.context, msg_type, msg)
+        )?;
         Ok(())
     }
 }
