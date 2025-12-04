@@ -18,6 +18,7 @@ fn main() -> std::io::Result<()> {
                 "./protos/common/network_connection.proto",
                 "./protos/common/networkbasetypes.proto",
                 "./protos/common/usermessages.proto",
+                "./protos/common/usercmd.proto",
             ],
             &["./protos/common"],
         )?;
@@ -36,6 +37,7 @@ fn main() -> std::io::Result<()> {
                 "./protos/citadel/citadel_usermessages.proto",
                 "./protos/citadel/base_modifier.proto",
                 "./protos/citadel/valveextensions.proto",
+                "./protos/citadel/citadel_usercmd.proto",
             ],
             &["./protos/common", "./protos/citadel"],
         )?;
